@@ -19,15 +19,30 @@ char incializacion(){
     }    
 }
 
-void print_board(char tablero[9]){   
+void print_board(char tablero[9]){  
+    int a = 0; 
+    cout<<"\n";
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
         {
-            cout<<tablero[i];
+            if(j!= 2){
+                cout<<tablero[a]<<"|";
+            }else{
+                cout<<tablero[a];
+            }
+            
+            a++;
         }
-        cout<<"\n";
+        if(i!= 2){
+            cout<<endl<<"-----"<<endl;
+        }else{
+            cout<<endl;
+        }
+        
+
     }
+    cout<<"\n";
 }
 
 
@@ -36,7 +51,7 @@ list<int> empty(char tablero[9]){
     list<int> posiciones;
     for (int i = 0; i < 9; i++)
     {        
-            if (tablero[i]=='*')
+            if (tablero[i]==' ')
             {
                 posiciones.push_back(i);
 
@@ -66,9 +81,9 @@ int pos_juego(){
 
 int main(){
     incializacion();
-    char tablero[9]={'*','*','*','*','*','*','*','*','*'};
+    char tablero[9]={' ',' ',' ',' ',' ',' ',' ',' ',' '};
     print_board(tablero);
 
-
+ 
     return 0;
 }
