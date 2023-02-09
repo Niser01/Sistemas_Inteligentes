@@ -61,10 +61,6 @@ int main(){
     incializacion();
     char tablero[3][3]={{'*','*','*'},{'*','*','*'},{'*','*','*'}};
     print_board(tablero);
-
     
-    
-
-
     return 0;
 }
