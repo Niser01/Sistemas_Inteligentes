@@ -84,6 +84,19 @@ char *tablero_juego(char tablero[9],char letra_jugador,int pos_oponente){
     return tablero;
 }
 
+void juego_maquina(char tablero[9],char letra_jugador){
+    char letra_máquina;
+    if (letra_jugador == 'X' || letra_jugador =='x')
+    {
+        letra_máquina='O';
+        
+    }else{
+        letra_máquina='X';
+    }
+
+    
+
+}
 
 
 int main(){
@@ -93,7 +106,6 @@ int main(){
     int pos_oponente = pos_juego();
     char *tablero = tablero_juego(tablero_blanco,letra_jugador,pos_oponente);
 
-   
 
 
     return 0;
