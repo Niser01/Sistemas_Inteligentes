@@ -2,6 +2,22 @@
 #include <list>
 using namespace std;
 
+char incializacion(){
+    while (true)
+    {
+        cout<<"Ingrese el simbolo con el que desea jugar 'X' ó 'O'"<<endl;
+        char simbolo;
+        cin>>simbolo;
+        if (simbolo == 'X'||simbolo == 'O'||simbolo =='x'||simbolo =='o'||simbolo =='0')
+        {
+            return simbolo;
+            
+        }else{
+            cout<<"El simbolo ingresado no es válido, intentelo de nuevo."<<endl;
+        }
+    }    
+}
+
 void print_board(char tablero[3][3]){   
     for (int i = 0; i < 3; i++)
     {
@@ -12,7 +28,6 @@ void print_board(char tablero[3][3]){
         cout<<"\n";
     }
 }
-
 
 list<int> empty(char tablero[3][3]){
     list<int> posiciones;
@@ -42,11 +57,8 @@ list<int> empty(char tablero[3][3]){
     return posiciones;
 }
 
-
-
-
 int main(){
-
+    incializacion();
     char tablero[3][3]={{'*','*','*'},{'*','*','*'},{'*','*','*'}};
     print_board(tablero);
 
