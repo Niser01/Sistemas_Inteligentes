@@ -58,7 +58,7 @@ class TicTacToe:
     def play(self):
 
         print("Bienvenido al juego")
-        print("Tu serás las 'X' y el computador el '0'")
+        print("Tu serás las 'X' y el computador el 'O'")
         first_player = input("¿Deseas ser el primero en jugar? (y/n) ")
         
         while first_player != 'y' and first_player != 'n':
@@ -78,6 +78,26 @@ class TicTacToe:
                 print("El computador te ganó")
             elif ' ' not in self.board:
                 print("Empate")
+
+class ComputerPlayer(TicTacToe):
+    #Definición inicial de la clase
+    def __init__(self):
+        self.botPlayer = "O"
+        self.humanPlayer = "X"
+
+    def players(self,state):
+        #n = len(state)
+        x = 0
+        o = 0
+
+        for i in range(9):
+            if(state[i] == "X"):
+                x = x+1
+            elif(state[i] == "0"):
+                o = o+1
+
+        
+
 
 game = TicTacToe()
 game.play()
