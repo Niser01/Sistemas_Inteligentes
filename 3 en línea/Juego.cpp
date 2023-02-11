@@ -87,263 +87,461 @@ char juego_maquina(char tablero[9],char letra_jugador){
     return letra_maquina;
 }
 
-char *jugadas_victoria(char tablero[9], int contador_jugadas, char letra_jugador){
+char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugador){
+    int rand_juego = 0;
     srand(time(NULL));
     char letra = juego_maquina(tablero,letra_jugador);
-    int victoria[9][3]={{0, 1, 2},{3, 4, 5},{6, 7, 8},{0, 3, 6},{1, 4, 7},{2, 5, 8},{0, 4, 8},{2, 4, 6}};
-    int pos_juego;
-
-    if(contador_jugadas<1){
-        while (true)
+    for (int i = 1; i < 10; i++)
+    {
+        if(tablero[i-1]==letra_jugador)
         {
-            pos_juego = 1+rand()%9;
-            if (tablero[pos_juego-1]==' ')
+            switch (i)
             {
-                tablero= tablero_juego(tablero,letra,pos_juego);
-                cout<<"Primer ciclo aleatorio"<<endl;
-                return tablero;
-            }
-
-        }
-        
-
-    }else{
-        if(tablero[0] == letra_jugador){
-            if(tablero[1]==letra_jugador){
-                if (tablero[2]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,3);
-                    cout<<3.1<<endl;
-                    return tablero;
-                }
-            }else{
-                if (tablero[2]==letra_jugador){
-                    if (tablero[1]==' ')
+                case 1:                    
+                    if(tablero[1]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[3]==letra_jugador){
+                        rand_juego=2;
+                    }else if(tablero[4]==letra_jugador){
+                        rand_juego=3;
+                    }else if(tablero[2]==letra_jugador){
+                        rand_juego=4;
+                    }else if(tablero[6]==letra_jugador){
+                        rand_juego=6;
+                    }else if(tablero[8]==letra_jugador){
+                        rand_juego=5;
+                    }else{
+                        rand_juego=1+rand()%(6-1);
+                    }
+                    
+                    switch (rand_juego)
                     {
+                    case 1:
+                        if (tablero[2]==' '){
+                        tablero= tablero_juego(tablero,letra,3);
+                        cout<<"caso: "<<1<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[6]==' '){
+                        tablero= tablero_juego(tablero,letra,7);
+                        cout<<"caso: "<<1<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 3:
+                        if (tablero[8]==' '){
+                        tablero= tablero_juego(tablero,letra,9);
+                        cout<<"caso: "<<1<<endl;
+                        return tablero;
+                        }
+                        break; 
+                    
+                    case 4:
+                        if (tablero[1]==' '){
                         tablero= tablero_juego(tablero,letra,2);
-                        cout<<2.1<<endl;
+                        cout<<"caso: "<<1<<endl;
                         return tablero;
-                    }                                    
-                }
-            }             
-            if(tablero[3]==letra_jugador){
-                if (tablero[6]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,7);
-                    cout<<7.1<<endl;
-                    return tablero;
-                }
-            }else{
-                if (tablero[6]==letra_jugador){
-                    if (tablero[3]==' ')
-                    {
+                        }
+                        break;
+                    case 5:
+                        if (tablero[4]==' '){
+                        tablero= tablero_juego(tablero,letra,5);
+                        cout<<"caso: "<<1<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 6:
+                        if (tablero[3]==' '){
                         tablero= tablero_juego(tablero,letra,4);
-                        cout<<4.1<<endl;
+                        cout<<"caso: "<<1<<endl;
                         return tablero;
-                    }                    
-                }
-            }
-
-            if(tablero[4]==letra_jugador){
-                if (tablero[8]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,9);
-                    cout<<9.1<<endl;
-                    return tablero;
-                } 
-
-            }else{
-                if (tablero[8]==letra_jugador){
-                    if (tablero[4]==' ')
+                        }
+                        break; 
+                    default:
+                        break;
+                    }
+                
+                case 2:                    
+                    if(tablero[4]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[7]==letra_jugador){
+                        rand_juego=2;
+                    }else{
+                        rand_juego=1+rand()%(2-1);
+                    }
+                    
+                    switch (rand_juego)
                     {
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<5.1<<endl;
-                        return tablero;
-                    }                     
-                }
-            }
-            
-        }else if(tablero[1] == letra_jugador){
-            if(tablero[2]==letra_jugador){
-                if (tablero[0]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,1);
-                    cout<<1.1<<endl;
-                    return tablero;
-                }                 
-
-            }
-             
-            if(tablero[4]==letra_jugador){
-                    if (tablero[7]==' ')
-                    {
+                    case 1:
+                        if (tablero[7]==' '){
                         tablero= tablero_juego(tablero,letra,8);
-                        cout<<8.1<<endl;
+                        cout<<"caso: "<<2<<endl;
                         return tablero;
-                    }             
-            }else{
-                if (tablero[7]==letra_jugador){
-                    if (tablero[4]==' ')
-                    {
+                        }
+                        break;
+                    case 2:
+                        if (tablero[4]==' '){
                         tablero= tablero_juego(tablero,letra,5);
-                        cout<<5.2<<endl;
+                        cout<<"caso: "<<2<<endl;
                         return tablero;
-                    } 
-                }
-            }
+                        }
+                        break;                    
+                    default:
+                        break;
+                    }
 
-        }else if(tablero[2] == letra_jugador){
-            if(tablero[5]==letra_jugador){
-                if (tablero[8]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,9);
-                    cout<<9.2<<endl;
-                    return tablero;
-                } 
-            }else{
-                if (tablero[8]==letra_jugador){
-                    if (tablero[5]==' ')
+                
+                case 3:
+                    if(tablero[1]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[4]==letra_jugador){
+                        rand_juego=2;
+                    }else if(tablero[5]==letra_jugador){
+                        rand_juego=3;
+                    }else if(tablero[0]==letra_jugador){
+                        rand_juego=4;
+                    }else if(tablero[6]==letra_jugador){
+                        rand_juego=5;
+                    }else if(tablero[8]==letra_jugador){
+                        rand_juego=6;
+                    }else{
+                        rand_juego=1+rand()%(6-1);
+                    }
+
+                    switch (rand_juego)
                     {
+                    case 1:
+                        if (tablero[0]==' '){
+                        tablero= tablero_juego(tablero,letra,1);
+                        cout<<"caso: "<<3<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[6]==' '){
+                        tablero= tablero_juego(tablero,letra,7);
+                        cout<<"caso: "<<3<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 3:
+                        if (tablero[8]==' '){
+                        tablero= tablero_juego(tablero,letra,9);
+                        cout<<"caso: "<<3<<endl;
+                        return tablero;
+                        }
+                        break; 
+                    case 4:
+                        if (tablero[1]==' '){
+                        tablero= tablero_juego(tablero,letra,2);
+                        cout<<"caso: "<<3<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 5:
+                        if (tablero[4]==' '){
+                        tablero= tablero_juego(tablero,letra,5);
+                        cout<<"caso: "<<3<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 6:
+                        if (tablero[5]==' '){
                         tablero= tablero_juego(tablero,letra,6);
-                        cout<<6.1<<endl;
+                        cout<<"caso: "<<3<<endl;
                         return tablero;
-                    }                     
-                }
-            }
-             
-            if(tablero[4]==letra_jugador){
-                if (tablero[6]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,7);
-                    cout<<7.2<<endl;
-                    return tablero;
-                }                 
-            }else{
-                if (tablero[6]==letra_jugador){
-                    if (tablero[4]==' ')
-                    {
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<5.3<<endl;
-                        return tablero;
-                    }                     
-                }
-            }
-        }else if(tablero[3] == letra_jugador){
-            if(tablero[6]==letra_jugador){
-                if (tablero[0]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,1);
-                    cout<<1.2<<endl;
-                    return tablero;
-                }                
-            }
-             
-            if(tablero[4]==letra_jugador){
-                if (tablero[5]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,6);
-                    cout<<6.2<<endl;
-                    return tablero;
-                }
-            }else{
-                if (tablero[5]==letra_jugador){
-                    if (tablero[4]==' ')
-                    {
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<5.4<<endl;
-                        return tablero;
+                        }
+                        break;                    
+                    default:
+                        break;
                     }
-                }
-            }
-        }else if(tablero[4] == letra_jugador){
-            if(tablero[5]==letra_jugador){
-                if (tablero[3]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,4);
-                    cout<<4.2<<endl;
-                    return tablero;
-                }
-            }          
-            
-        }else if(tablero[5] == letra_jugador){
-            if(tablero[8]==letra_jugador){
-                if (tablero[2]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,3);
-                    cout<<3.2<<endl;
-                    return tablero;
-                }
-            }          
-            
-        }else if(tablero[6] == letra_jugador){
-            if(tablero[7]==letra_jugador){
-                if (tablero[8]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,9);
-                    cout<<9.3<<endl;
-                    return tablero;
-                }                
 
-            }else{
-                if (tablero[8]==letra_jugador){
-                    if (tablero[7]==' ')
+
+                case 4:                    
+                    if(tablero[4]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[5]==letra_jugador){
+                        rand_juego=2;
+                    }else{
+                        rand_juego=1+rand()%(2-1);
+                    }
+                    
+                    switch (rand_juego)
                     {
+                    case 1:
+                        if (tablero[5]==' '){
+                        tablero= tablero_juego(tablero,letra,6);
+                        cout<<"caso: "<<4<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[4]==' '){
+                        tablero= tablero_juego(tablero,letra,5);
+                        cout<<"caso: "<<4<<endl;
+                        return tablero;
+                        }
+                        break;                    
+                    default:
+                        break;
+                    }                    
+                
+                case 5:
+                    if(tablero[0]==letra_jugador){
+                        rand_juego=4;
+                    }else if(tablero[2]==letra_jugador){
+                        rand_juego=3;
+                    }else if(tablero[6]==letra_jugador){
+                        rand_juego=2;
+                    }else if(tablero[8]==letra_jugador){
+                        rand_juego=1;
+                    }else{
+                        rand_juego=1+rand()%(4-1);
+                    }
+
+                    switch (rand_juego)
+                    {
+                    case 1:
+                        if (tablero[0]==' '){
+                        tablero= tablero_juego(tablero,letra,1);
+                        cout<<"caso: "<<5<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[2]==' '){
+                        tablero= tablero_juego(tablero,letra,3);
+                        cout<<"caso: "<<5<<endl;
+                        return tablero;
+                        }
+                        break;                    
+                    case 3:
+                        if (tablero[6]==' '){
+                        tablero= tablero_juego(tablero,letra,7);
+                        cout<<"caso: "<<5<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 4:
+                        if (tablero[8]==' '){
+                        tablero= tablero_juego(tablero,letra,9);
+                        cout<<"caso: "<<5<<endl;
+                        return tablero;
+                        }
+                        break; 
+                    
+                    default:
+                        break;
+                    }
+
+                case 6:                    
+                    if(tablero[4]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[3]==letra_jugador){
+                        rand_juego=2;
+                    }else{
+                        rand_juego=1+rand()%(2-1);
+                    }
+                    
+                    switch (rand_juego)
+                    {
+                    case 1:
+                        if (tablero[3]==' '){
+                        tablero= tablero_juego(tablero,letra,4);
+                        cout<<"caso: "<<6<<endl;                        
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[4]==' '){
+                        tablero= tablero_juego(tablero,letra,5);
+                        cout<<"caso: "<<6<<endl;
+                        return tablero;
+                        }
+                        break;                    
+                    default:
+                        break;
+                    }   
+                
+                case 7:
+                    if(tablero[3]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[4]==letra_jugador){
+                        rand_juego=2;
+                    }else if(tablero[7]==letra_jugador){
+                        rand_juego=3;
+                    }else if(tablero[0]==letra_jugador){
+                        rand_juego=4;
+                    }else if(tablero[2]==letra_jugador){
+                        rand_juego=5;
+                    }else if(tablero[8]==letra_jugador){
+                        rand_juego=6;
+                    }else{
+                        rand_juego=1+rand()%(3-1);
+                    }
+                    
+                    switch (rand_juego)
+                    {
+                    case 1:
+                        if (tablero[0]==' '){
+                        tablero= tablero_juego(tablero,letra,1);
+                        cout<<"caso: "<<7<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[2]==' '){
+                        tablero= tablero_juego(tablero,letra,3);
+                        cout<<"caso: "<<7<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 3:
+                        if (tablero[8]==' '){
+                        tablero= tablero_juego(tablero,letra,9);
+                        cout<<"caso: "<<7<<endl;
+                        return tablero;
+                        }
+                        break; 
+                    case 4:
+                        if (tablero[3]==' '){
+                        tablero= tablero_juego(tablero,letra,4);
+                        cout<<"caso: "<<7<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 5:
+                        if (tablero[4]==' '){
+                        tablero= tablero_juego(tablero,letra,5);
+                        cout<<"caso: "<<7<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 6:
+                        if (tablero[7]==' '){
                         tablero= tablero_juego(tablero,letra,8);
-                        cout<<8.2<<endl;
+                        cout<<"caso: "<<7<<endl;
                         return tablero;
+                        }
+                        break;                     
+                    default:
+                        break; 
                     }
-                }
-            }
-            if(tablero[4]==letra_jugador){
-                if (tablero[2]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,3);
-                    cout<<3.3<<endl;
-                    return tablero;
-                }
-            }
-             
-            
-        }else if(tablero[8] == letra_jugador){
-            if(tablero[7]==letra_jugador){
-                if (tablero[6]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,7);
-                    cout<<7.3<<endl;
-                    return tablero;
-                }
 
+                case 8:                    
+                    if(tablero[4]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[1]==letra_jugador){
+                        rand_juego=2;
+                    }else{
+                        rand_juego=1+rand()%(2-1);
+                    }
+                    
+                    switch (rand_juego)
+                    {
+                    case 1:
+                        if (tablero[1]==' '){
+                        tablero= tablero_juego(tablero,letra,2);
+                        cout<<"caso: "<<8<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[4]==' '){
+                        tablero= tablero_juego(tablero,letra,5);
+                        cout<<"caso: "<<8<<endl;
+                        return tablero;
+                        }
+                        break;                    
+                    default:
+                        break;
+                    }  
+
+                case 9:
+                    if(tablero[4]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[5]==letra_jugador){
+                        rand_juego=2;
+                    }else if(tablero[7]==letra_jugador){
+                        rand_juego=3;
+                    }else if(tablero[0]==letra_jugador){
+                        rand_juego=4;
+                    }else if(tablero[6]==letra_jugador){
+                        rand_juego=5;
+                    }else if(tablero[2]==letra_jugador){
+                        rand_juego=6;
+                    }else{
+                        rand_juego=1+rand()%(6-1);
+                    }                
+
+                    switch (rand_juego)
+                    {
+                    case 1:
+                        if (tablero[0]==' '){
+                        tablero= tablero_juego(tablero,letra,1);
+                        cout<<"caso: "<<9<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[2]==' '){
+                        tablero= tablero_juego(tablero,letra,3);
+                        cout<<"caso: "<<9<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 3:
+                        if (tablero[6]==' '){
+                        tablero= tablero_juego(tablero,letra,7);
+                        cout<<"caso: "<<9<<endl;
+                        return tablero;
+                        }
+                        break; 
+
+                    case 4:
+                        if (tablero[4]==' '){
+                        tablero= tablero_juego(tablero,letra,5);
+                        cout<<"caso: "<<9<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 5:
+                        if (tablero[7]==' '){
+                        tablero= tablero_juego(tablero,letra,8);
+                        cout<<"caso: "<<9<<endl;
+                        return tablero;
+                        }
+                        break;
+                    case 6:
+                        if (tablero[5]==' '){
+                        tablero= tablero_juego(tablero,letra,6);
+                        cout<<"caso: "<<9<<endl;
+                        return tablero;
+                        }
+                        break; 
+
+                    default:
+                        break; 
+                    }
+
+            default:
+               
+                break;
             }
-            if(tablero[4]==letra_jugador){
-                if (tablero[0]==' ')
-                {
-                    tablero= tablero_juego(tablero,letra,1);
-                    cout<<1.3<<endl;
-                    return tablero;
-                }
-            }
-             
-            
         }
-
-
     }
+    
     while (true)
     {
-        pos_juego = 1+rand()%9;
-        if (tablero[pos_juego-1]==' ')
+        rand_juego = 1+rand()%(9-1);
+        if (tablero[rand_juego-1]==' ')
         {
-            tablero= tablero_juego(tablero,letra,pos_juego);
-            cout<<"segundo ciclo aleatorio"<<endl;
+            tablero= tablero_juego(tablero,letra,rand_juego);
             return tablero;
         }
-
     }    
-}
-
-
-char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugador){
-
 }
 
 
@@ -359,7 +557,7 @@ int main(){
         print_board(tablero);
         cout<<"--------------"<<endl;
         cout<<"Jugada máquina: "<<endl;
-        tablero = jugadas_victoria(tablero,contador_jugadas,letra_jugador);        
+        tablero = jugadas_victoria_2(tablero,contador_jugadas,letra_jugador);        
         print_board(tablero);
         contador_jugadas=contador_jugadas+1;
     }
