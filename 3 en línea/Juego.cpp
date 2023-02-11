@@ -93,21 +93,7 @@ char *jugadas_victoria(char tablero[9], int contador_jugadas, char letra_jugador
     int victoria[9][3]={{0, 1, 2},{3, 4, 5},{6, 7, 8},{0, 3, 6},{1, 4, 7},{2, 5, 8},{0, 4, 8},{2, 4, 6}};
     int pos_juego;
 
-    if(contador_jugadas<1){
-        while (true)
-        {
-            pos_juego = 1+rand()%9;
-            if (tablero[pos_juego-1]==' ')
-            {
-                tablero= tablero_juego(tablero,letra,pos_juego);
-                cout<<"Primer ciclo aleatorio"<<endl;
-                return tablero;
-            }
 
-        }
-        
-
-    }else{
         if(tablero[0] == letra_jugador){
             if(tablero[1]==letra_jugador){
                 if (tablero[2]==' ')
@@ -325,25 +311,225 @@ char *jugadas_victoria(char tablero[9], int contador_jugadas, char letra_jugador
              
             
         }
-
-
-    }
-    while (true)
-    {
-        pos_juego = 1+rand()%9;
-        if (tablero[pos_juego-1]==' ')
-        {
-            tablero= tablero_juego(tablero,letra,pos_juego);
-            cout<<"segundo ciclo aleatorio"<<endl;
-            return tablero;
-        }
-
-    }    
+    return tablero;
 }
 
 
 char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugador){
+    int rand_juego = 0;
+    srand(time(NULL));
+    char letra = juego_maquina(tablero,letra_jugador);
+    for (int i = 1; i < 10; i+=2)
+    {
+        if(tablero[i-1]==letra_jugador)
+        {
+            switch (i)
+            {
+                case 1:                    
+                    if(tablero[1]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[3]==letra_jugador){
+                        rand_juego=2;
+                    }else if(tablero[4]==letra_jugador){
+                        rand_juego=3;
+                    }else{
+                        rand_juego=1+rand()%(3-1);
+                    }
+                    
+                    switch (rand_juego)
+                    {
+                    case 1:
+                        if (tablero[2]==' '){
+                        tablero= tablero_juego(tablero,letra,3);
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[6]==' '){
+                        tablero= tablero_juego(tablero,letra,7);
+                        return tablero;
+                        }
+                        break;
+                    case 3:
+                        if (tablero[8]==' '){
+                        tablero= tablero_juego(tablero,letra,9);
+                        return tablero;
+                        }
+                        break; 
+                    
+                    default:
+                        jugadas_victoria(tablero,contador_jugadas,letra_jugador);  
+                    }
+                
+                
+                case 3:
+                    if(tablero[1]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[4]==letra_jugador){
+                        rand_juego=2;
+                    }else{
+                        rand_juego=1+rand()%(3-1);
+                    }
 
+                    switch (rand_juego)
+                    {
+                    case 1:
+                        if (tablero[0]==' '){
+                        tablero= tablero_juego(tablero,letra,1);
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[6]==' '){
+                        tablero= tablero_juego(tablero,letra,7);
+                        return tablero;
+                        }
+                        break;
+                    case 3:
+                        if (tablero[8]==' '){
+                        tablero= tablero_juego(tablero,letra,9);
+                        return tablero;
+                        }
+                        break; 
+                    
+                    default:
+                        jugadas_victoria(tablero,contador_jugadas,letra_jugador);  
+                    }
+                
+                case 5:
+                    if(tablero[0]==letra_jugador){
+                        rand_juego=4;
+                    }else if(tablero[2]==letra_jugador){
+                        rand_juego=3;
+                    }else if(tablero[6]==letra_jugador){
+                        rand_juego=2;
+                    }else if(tablero[8]==letra_jugador){
+                        rand_juego=1;
+                    }else{
+                        rand_juego=1+rand()%(3-1);
+                    }
+
+                    switch (rand_juego)
+                    {
+                    case 1:
+                        if (tablero[0]==' '){
+                        tablero= tablero_juego(tablero,letra,1);
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[2]==' '){
+                        tablero= tablero_juego(tablero,letra,3);
+                        return tablero;
+                        }
+                        break;                    
+                    case 3:
+                        if (tablero[6]==' '){
+                        tablero= tablero_juego(tablero,letra,7);
+                        return tablero;
+                        }
+                        break;
+                    case 4:
+                        if (tablero[8]==' '){
+                        tablero= tablero_juego(tablero,letra,9);
+                        return tablero;
+                        }
+                        break; 
+                    
+                    default:
+                        jugadas_victoria(tablero,contador_jugadas,letra_jugador);  
+                    }
+
+                
+                case 7:
+                    if(tablero[3]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[4]==letra_jugador){
+                        rand_juego=2;
+                    }else if(tablero[7]==letra_jugador){
+                        rand_juego=3;
+                    }else{
+                        rand_juego=1+rand()%(3-1);
+                    }
+                    
+                    switch (rand_juego)
+                    {
+                    case 1:
+                        if (tablero[0]==' '){
+                        tablero= tablero_juego(tablero,letra,1);
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[2]==' '){
+                        tablero= tablero_juego(tablero,letra,3);
+                        return tablero;
+                        }
+                        break;
+                    case 3:
+                        if (tablero[8]==' '){
+                        tablero= tablero_juego(tablero,letra,9);
+                        return tablero;
+                        }
+                        break; 
+                    
+                    default:
+                        jugadas_victoria(tablero,contador_jugadas,letra_jugador);  
+                    }
+
+                case 9:
+                    if(tablero[4]==letra_jugador){
+                        rand_juego=1;
+                    }else if(tablero[5]==letra_jugador){
+                        rand_juego=2;
+                    }else if(tablero[7]==letra_jugador){
+                        rand_juego=3;
+                    }else{
+                        rand_juego=1+rand()%(3-1);
+                    }                
+
+                    switch (rand_juego)
+                    {
+                    case 1:
+                        if (tablero[0]==' '){
+                        tablero= tablero_juego(tablero,letra,1);
+                        return tablero;
+                        }
+                        break;
+                    case 2:
+                        if (tablero[2]==' '){
+                        tablero= tablero_juego(tablero,letra,3);
+                        return tablero;
+                        }
+                        break;
+                    case 3:
+                        if (tablero[6]==' '){
+                        tablero= tablero_juego(tablero,letra,7);
+                        return tablero;
+                        }
+                        break; 
+                    
+                    default:
+                        jugadas_victoria(tablero,contador_jugadas,letra_jugador);  
+                    }
+
+            default:
+               
+                break;
+            }
+        }
+    }
+    
+    while (true)
+    {
+        rand_juego = 1+rand()%(9-1);
+        if (tablero[rand_juego-1]==' ')
+        {
+            tablero= tablero_juego(tablero,letra,rand_juego);
+            cout<<"segundo ciclo aleatorio_2"<<endl;
+            return tablero;
+        }
+    }    
 }
 
 
@@ -359,7 +545,7 @@ int main(){
         print_board(tablero);
         cout<<"--------------"<<endl;
         cout<<"Jugada máquina: "<<endl;
-        tablero = jugadas_victoria(tablero,contador_jugadas,letra_jugador);        
+        tablero = jugadas_victoria_2(tablero,contador_jugadas,letra_jugador);        
         print_board(tablero);
         contador_jugadas=contador_jugadas+1;
     }
