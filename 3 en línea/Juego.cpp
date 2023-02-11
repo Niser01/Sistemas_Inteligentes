@@ -94,127 +94,209 @@ char *jugadas_victoria(char tablero[9], int contador_jugadas, char letra_jugador
     int pos_juego;
 
     if(contador_jugadas<2){
-        pos_juego = 1+rand()%9;
-        tablero= tablero_juego(tablero,letra,pos_juego);
+        while (true)
+        {
+            pos_juego = 1+rand()%9;
+            if (tablero[pos_juego]==' ')
+            {
+                tablero= tablero_juego(tablero,letra,pos_juego);
+                return tablero;
+            }
+
+        }
+        
+
     }else{
         if(tablero[0] == letra_jugador){
             if(tablero[1]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,3);
-                return tablero;
-            }else{
-                if (tablero[2]==letra_jugador){
-                    tablero= tablero_juego(tablero,letra,2);
+                if (tablero[2]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,3);
                     return tablero;
                 }
-            }
-             
+            }else{
+                if (tablero[2]==letra_jugador){
+                    if (tablero[1]==' ')
+                    {
+                        tablero= tablero_juego(tablero,letra,2);
+                        return tablero;
+                    }                                    
+                }
+            }             
             if(tablero[3]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,7);
-                return tablero;
+                if (tablero[6]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,7);
+                    return tablero;
+                }
             }else{
                 if (tablero[6]==letra_jugador){
-                    tablero= tablero_juego(tablero,letra,4);
-                    return tablero;
+                    if (tablero[3]==' ')
+                    {
+                        tablero= tablero_juego(tablero,letra,4);
+                        return tablero;
+                    }                    
                 }
             }
 
             if(tablero[4]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,9);
-                return tablero;
+                if (tablero[8]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,9);
+                    return tablero;
+                } 
+
             }else{
                 if (tablero[8]==letra_jugador){
-                    tablero= tablero_juego(tablero,letra,5);
-                    return tablero;
+                    if (tablero[4]==' ')
+                    {
+                        tablero= tablero_juego(tablero,letra,5);
+                        return tablero;
+                    }                     
                 }
             }
             
         }else if(tablero[1] == letra_jugador){
             if(tablero[2]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,1);
-                return tablero;
+                if (tablero[0]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,1);
+                    return tablero;
+                }                 
+
             }
              
             if(tablero[4]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,8);
-                return tablero;
+                    if (tablero[7]==' ')
+                    {
+                        tablero= tablero_juego(tablero,letra,8);
+                        return tablero;
+                    }             
             }else{
                 if (tablero[7]==letra_jugador){
-                    tablero= tablero_juego(tablero,letra,5);
-                    return tablero;
+                    if (tablero[4]==' ')
+                    {
+                        tablero= tablero_juego(tablero,letra,5);
+                        return tablero;
+                    } 
                 }
             }
 
         }else if(tablero[2] == letra_jugador){
             if(tablero[5]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,9);
-                return tablero;
+                if (tablero[8]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,9);
+                    return tablero;
+                } 
             }else{
                 if (tablero[8]==letra_jugador){
-                    tablero= tablero_juego(tablero,letra,6);
-                    return tablero;
+                    if (tablero[5]==' ')
+                    {
+                        tablero= tablero_juego(tablero,letra,6);
+                        return tablero;
+                    }                     
                 }
             }
              
             if(tablero[4]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,7);
-                return tablero;
+                if (tablero[6]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,7);
+                    return tablero;
+                }                 
             }else{
                 if (tablero[6]==letra_jugador){
-                    tablero= tablero_juego(tablero,letra,5);
-                    return tablero;
+                    if (tablero[4]==' ')
+                    {
+                        tablero= tablero_juego(tablero,letra,5);
+                        return tablero;
+                    }                     
                 }
             }
         }else if(tablero[3] == letra_jugador){
             if(tablero[6]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,1);
-                return tablero;
+                if (tablero[0]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,1);
+                    return tablero;
+                }                
             }
              
             if(tablero[4]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,6);
-                return tablero;
+                if (tablero[5]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,6);
+                    return tablero;
+                }
             }else{
                 if (tablero[5]==letra_jugador){
-                    tablero= tablero_juego(tablero,letra,5);
-                    return tablero;
+                    if (tablero[4]==' ')
+                    {
+                        tablero= tablero_juego(tablero,letra,5);
+                        return tablero;
+                    }
                 }
             }
         }else if(tablero[4] == letra_jugador){
             if(tablero[5]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,4);
-                return tablero;
+                if (tablero[3]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,4);
+                    return tablero;
+                }
             }          
             
         }else if(tablero[5] == letra_jugador){
             if(tablero[8]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,3);
-                return tablero;
+                if (tablero[2]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,3);
+                    return tablero;
+                }
             }          
             
         }else if(tablero[6] == letra_jugador){
             if(tablero[7]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,9);
-                return tablero;
+                if (tablero[8]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,9);
+                    return tablero;
+                }                
+
             }else{
                 if (tablero[8]==letra_jugador){
-                    tablero= tablero_juego(tablero,letra,8);
-                    return tablero;
+                    if (tablero[7]==' ')
+                    {
+                        tablero= tablero_juego(tablero,letra,8);
+                        return tablero;
+                    }
                 }
             }
             if(tablero[4]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,3);
-                return tablero;
+                if (tablero[2]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,3);
+                    return tablero;
+                }
             }
              
             
         }else if(tablero[8] == letra_jugador){
             if(tablero[7]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,7);
-                return tablero;
+                if (tablero[6]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,7);
+                    return tablero;
+                }
+
             }
             if(tablero[4]==letra_jugador){
-                tablero= tablero_juego(tablero,letra,1);
-                return tablero;
+                if (tablero[0]==' ')
+                {
+                    tablero= tablero_juego(tablero,letra,1);
+                    return tablero;
+                }
             }
              
             
@@ -222,6 +304,7 @@ char *jugadas_victoria(char tablero[9], int contador_jugadas, char letra_jugador
 
 
     }
+    
 }
 
 
