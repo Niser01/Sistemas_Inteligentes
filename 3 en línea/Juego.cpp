@@ -1,5 +1,4 @@
 #include <iostream>
-#include <list>
 #include<stdlib.h>
 using namespace std;
 
@@ -119,21 +118,21 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 1:
                         if (tablero[2]==' '){
                         tablero= tablero_juego(tablero,letra,3);
-                        cout<<"caso: "<<1<<endl;
+                        cout<<"caso: "<<1.1<<endl;
                         return tablero;
                         }
                         break;
                     case 2:
                         if (tablero[6]==' '){
                         tablero= tablero_juego(tablero,letra,7);
-                        cout<<"caso: "<<1<<endl;
+                        cout<<"caso: "<<1.2<<endl;
                         return tablero;
                         }
                         break;
                     case 3:
                         if (tablero[8]==' '){
                         tablero= tablero_juego(tablero,letra,9);
-                        cout<<"caso: "<<1<<endl;
+                        cout<<"caso: "<<1.3<<endl;
                         return tablero;
                         }
                         break; 
@@ -141,21 +140,21 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 4:
                         if (tablero[1]==' '){
                         tablero= tablero_juego(tablero,letra,2);
-                        cout<<"caso: "<<1<<endl;
+                        cout<<"caso: "<<1.4<<endl;
                         return tablero;
                         }
                         break;
                     case 5:
                         if (tablero[4]==' '){
                         tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<1<<endl;
+                        cout<<"caso: "<<1.5<<endl;
                         return tablero;
                         }
                         break;
                     case 6:
                         if (tablero[3]==' '){
                         tablero= tablero_juego(tablero,letra,4);
-                        cout<<"caso: "<<1<<endl;
+                        cout<<"caso: "<<1.6<<endl;
                         return tablero;
                         }
                         break; 
@@ -177,14 +176,14 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 1:
                         if (tablero[7]==' '){
                         tablero= tablero_juego(tablero,letra,8);
-                        cout<<"caso: "<<2<<endl;
+                        cout<<"caso: "<<2.1<<endl;
                         return tablero;
                         }
                         break;
                     case 2:
                         if (tablero[4]==' '){
                         tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<2<<endl;
+                        cout<<"caso: "<<2.2<<endl;
                         return tablero;
                         }
                         break;                    
@@ -215,42 +214,42 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 1:
                         if (tablero[0]==' '){
                         tablero= tablero_juego(tablero,letra,1);
-                        cout<<"caso: "<<3<<endl;
+                        cout<<"caso: "<<3.1<<endl;
                         return tablero;
                         }
                         break;
                     case 2:
                         if (tablero[6]==' '){
                         tablero= tablero_juego(tablero,letra,7);
-                        cout<<"caso: "<<3<<endl;
+                        cout<<"caso: "<<3.2<<endl;
                         return tablero;
                         }
                         break;
                     case 3:
                         if (tablero[8]==' '){
                         tablero= tablero_juego(tablero,letra,9);
-                        cout<<"caso: "<<3<<endl;
+                        cout<<"caso: "<<3.3<<endl;
                         return tablero;
                         }
                         break; 
                     case 4:
                         if (tablero[1]==' '){
                         tablero= tablero_juego(tablero,letra,2);
-                        cout<<"caso: "<<3<<endl;
+                        cout<<"caso: "<<3.4<<endl;
                         return tablero;
                         }
                         break;
                     case 5:
                         if (tablero[4]==' '){
                         tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<3<<endl;
+                        cout<<"caso: "<<3.5<<endl;
                         return tablero;
                         }
                         break;
                     case 6:
                         if (tablero[5]==' '){
                         tablero= tablero_juego(tablero,letra,6);
-                        cout<<"caso: "<<3<<endl;
+                        cout<<"caso: "<<3.6<<endl;
                         return tablero;
                         }
                         break;                    
@@ -273,14 +272,14 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 1:
                         if (tablero[5]==' '){
                         tablero= tablero_juego(tablero,letra,6);
-                        cout<<"caso: "<<4<<endl;
+                        cout<<"caso: "<<4.1<<endl;
                         return tablero;
                         }
                         break;
                     case 2:
                         if (tablero[4]==' '){
                         tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<4<<endl;
+                        cout<<"caso: "<<4.2<<endl;
                         return tablero;
                         }
                         break;                    
@@ -306,28 +305,28 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 1:
                         if (tablero[0]==' '){
                         tablero= tablero_juego(tablero,letra,1);
-                        cout<<"caso: "<<5<<endl;
+                        cout<<"caso: "<<5.1<<endl;
                         return tablero;
                         }
                         break;
                     case 2:
                         if (tablero[2]==' '){
                         tablero= tablero_juego(tablero,letra,3);
-                        cout<<"caso: "<<5<<endl;
+                        cout<<"caso: "<<5.2<<endl;
                         return tablero;
                         }
                         break;                    
                     case 3:
                         if (tablero[6]==' '){
                         tablero= tablero_juego(tablero,letra,7);
-                        cout<<"caso: "<<5<<endl;
+                        cout<<"caso: "<<5.3<<endl;
                         return tablero;
                         }
                         break;
                     case 4:
                         if (tablero[8]==' '){
                         tablero= tablero_juego(tablero,letra,9);
-                        cout<<"caso: "<<5<<endl;
+                        cout<<"caso: "<<5.4<<endl;
                         return tablero;
                         }
                         break; 
@@ -350,14 +349,14 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 1:
                         if (tablero[3]==' '){
                         tablero= tablero_juego(tablero,letra,4);
-                        cout<<"caso: "<<6<<endl;                        
+                        cout<<"caso: "<<6.1<<endl;                        
                         return tablero;
                         }
                         break;
                     case 2:
                         if (tablero[4]==' '){
                         tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<6<<endl;
+                        cout<<"caso: "<<6.2<<endl;
                         return tablero;
                         }
                         break;                    
@@ -387,42 +386,42 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 1:
                         if (tablero[0]==' '){
                         tablero= tablero_juego(tablero,letra,1);
-                        cout<<"caso: "<<7<<endl;
+                        cout<<"caso: "<<7.1<<endl;
                         return tablero;
                         }
                         break;
                     case 2:
                         if (tablero[2]==' '){
                         tablero= tablero_juego(tablero,letra,3);
-                        cout<<"caso: "<<7<<endl;
+                        cout<<"caso: "<<7.2<<endl;
                         return tablero;
                         }
                         break;
                     case 3:
                         if (tablero[8]==' '){
                         tablero= tablero_juego(tablero,letra,9);
-                        cout<<"caso: "<<7<<endl;
+                        cout<<"caso: "<<7.3<<endl;
                         return tablero;
                         }
                         break; 
                     case 4:
                         if (tablero[3]==' '){
                         tablero= tablero_juego(tablero,letra,4);
-                        cout<<"caso: "<<7<<endl;
+                        cout<<"caso: "<<7.4<<endl;
                         return tablero;
                         }
                         break;
                     case 5:
                         if (tablero[4]==' '){
                         tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<7<<endl;
+                        cout<<"caso: "<<7.5<<endl;
                         return tablero;
                         }
                         break;
                     case 6:
                         if (tablero[7]==' '){
                         tablero= tablero_juego(tablero,letra,8);
-                        cout<<"caso: "<<7<<endl;
+                        cout<<"caso: "<<7.6<<endl;
                         return tablero;
                         }
                         break;                     
@@ -444,14 +443,14 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 1:
                         if (tablero[1]==' '){
                         tablero= tablero_juego(tablero,letra,2);
-                        cout<<"caso: "<<8<<endl;
+                        cout<<"caso: "<<8.1<<endl;
                         return tablero;
                         }
                         break;
                     case 2:
                         if (tablero[4]==' '){
                         tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<8<<endl;
+                        cout<<"caso: "<<8.2<<endl;
                         return tablero;
                         }
                         break;                    
@@ -481,21 +480,21 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 1:
                         if (tablero[0]==' '){
                         tablero= tablero_juego(tablero,letra,1);
-                        cout<<"caso: "<<9<<endl;
+                        cout<<"caso: "<<9.1<<endl;
                         return tablero;
                         }
                         break;
                     case 2:
                         if (tablero[2]==' '){
                         tablero= tablero_juego(tablero,letra,3);
-                        cout<<"caso: "<<9<<endl;
+                        cout<<"caso: "<<9.2<<endl;
                         return tablero;
                         }
                         break;
                     case 3:
                         if (tablero[6]==' '){
                         tablero= tablero_juego(tablero,letra,7);
-                        cout<<"caso: "<<9<<endl;
+                        cout<<"caso: "<<9.3<<endl;
                         return tablero;
                         }
                         break; 
@@ -503,21 +502,21 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     case 4:
                         if (tablero[4]==' '){
                         tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<9<<endl;
+                        cout<<"caso: "<<9.4<<endl;
                         return tablero;
                         }
                         break;
                     case 5:
                         if (tablero[7]==' '){
                         tablero= tablero_juego(tablero,letra,8);
-                        cout<<"caso: "<<9<<endl;
+                        cout<<"caso: "<<9.5<<endl;
                         return tablero;
                         }
                         break;
                     case 6:
                         if (tablero[5]==' '){
                         tablero= tablero_juego(tablero,letra,6);
-                        cout<<"caso: "<<9<<endl;
+                        cout<<"caso: "<<9.6<<endl;
                         return tablero;
                         }
                         break; 
@@ -545,13 +544,108 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
 }
 
 
+int victoria(char tablero[9], char letra_jugador){
+    
+    char letra_maq = juego_maquina(tablero,letra_jugador);
+    for (int i = 0; i < 9; i++)
+    {
+        switch (i)
+        {
+        case 0:
+            if (tablero[0]==letra_jugador && tablero[1]==letra_jugador && tablero[2]==letra_jugador){
+                cout<<"El ganador es el jugador. "<< letra_jugador<<endl;
+                return 20;                       
+            }else if (tablero[0]==letra_maq && tablero[1]==letra_maq && tablero[2]==letra_maq){
+                cout<<"Gana la maquina. "<< letra_maq<<endl;
+                return 20;                       
+            }
+            break;
+        
+        case 1:
+            if (tablero[3]==letra_jugador && tablero[4]==letra_jugador && tablero[5]==letra_jugador){
+                cout<<"El ganador es el jugador. "<< letra_jugador<<endl;
+                return 20;                       
+            }else if (tablero[3]==letra_maq && tablero[4]==letra_maq && tablero[5]==letra_maq){
+                cout<<"Gana la maquina. "<< letra_maq<<endl;
+                return 20;                       
+            }
+            break;
+
+        case 2:
+            if (tablero[6]==letra_jugador && tablero[7]==letra_jugador && tablero[8]==letra_jugador){
+                cout<<"El ganador es el jugador. "<< letra_jugador<<endl;
+                return 20;                       
+            }else if (tablero[6]==letra_maq && tablero[7]==letra_maq && tablero[8]==letra_maq){
+                cout<<"Gana la maquina. "<< letra_maq<<endl;
+                return 20;                       
+            }
+            break;
+        case 3:
+            if (tablero[0]==letra_jugador && tablero[3]==letra_jugador && tablero[6]==letra_jugador){
+                cout<<"El ganador es el jugador. "<< letra_jugador<<endl;
+                return 20;                       
+            }else if (tablero[0]==letra_maq && tablero[3]==letra_maq && tablero[6]==letra_maq){
+                cout<<"Gana la maquina. "<< letra_maq<<endl;
+                return 20;                       
+            }
+            break;
+        case 4:
+            if (tablero[1]==letra_jugador && tablero[4]==letra_jugador && tablero[7]==letra_jugador){
+                cout<<"El ganador es el jugador. "<< letra_jugador<<endl;
+                return 20;                       
+            }else if (tablero[1]==letra_maq && tablero[4]==letra_maq && tablero[7]==letra_maq){
+                cout<<"Gana la maquina. "<< letra_maq<<endl;
+                return 20;                       
+            }
+            break;
+        case 5:
+            if (tablero[2]==letra_jugador && tablero[5]==letra_jugador && tablero[8]==letra_jugador){
+                cout<<"El ganador es el jugador. "<< letra_jugador<<endl;
+                return 20;                       
+            }else if (tablero[2]==letra_maq && tablero[5]==letra_maq && tablero[8]==letra_maq){
+                cout<<"Gana la maquina. "<< letra_maq<<endl;
+                return 20;                       
+            }
+            break;
+        case 6:
+            if (tablero[0]==letra_jugador && tablero[4]==letra_jugador && tablero[8]==letra_jugador){
+                cout<<"El ganador es el jugador. "<< letra_jugador<<endl;
+                return 20;                       
+            }else if (tablero[0]==letra_maq && tablero[4]==letra_maq && tablero[8]==letra_maq){
+                cout<<"Gana la maquina. "<< letra_maq<<endl;
+                return 20;                       
+            }
+            break;
+        case 7:
+            if (tablero[2]==letra_jugador && tablero[4]==letra_jugador && tablero[6]==letra_jugador){
+                cout<<"El ganador es el jugador. "<< letra_jugador<<endl;
+                return 20;                       
+            }else if (tablero[2]==letra_maq && tablero[4]==letra_maq && tablero[6]==letra_maq){
+                cout<<"Gana la maquina. "<< letra_maq<<endl;
+                return 20;                       
+            }
+            break;
+        
+        default:
+            break;
+        }
+        
+    }
+    
+
+
+    return 0;
+}
+
+
 int main(){
     char letra_jugador = incializacion();
     char tablero_blanco[9]={' ',' ',' ',' ',' ',' ',' ',' ',' '};
     int contador_jugadas=0;
+    int rev_victoria = 0;
     print_first_board();
 
-    while(contador_jugadas<9){
+    while(contador_jugadas<8){
         int pos_oponente = pos_juego();
         char *tablero = tablero_juego(tablero_blanco,letra_jugador,pos_oponente);
         print_board(tablero);
@@ -559,9 +653,13 @@ int main(){
         cout<<"Jugada máquina: "<<endl;
         tablero = jugadas_victoria_2(tablero,contador_jugadas,letra_jugador);        
         print_board(tablero);
-        contador_jugadas=contador_jugadas+1;
+        rev_victoria = victoria(tablero, letra_jugador);
+        contador_jugadas=contador_jugadas+rev_victoria+1;
     }
 
+    if(contador_jugadas==8){
+        cout<<"Se ha llegado a un empate. "<<endl;
+    }
 
 
 
