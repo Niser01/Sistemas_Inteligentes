@@ -185,544 +185,542 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
     int num_vic1=200,num_vic2=200,num_vic3=200;
     for (int i = 0; i < 9; i++)
     {
-        if(tablero[i]==letra_jugador)
+        switch (i)
         {
-            switch (i)
-            {
-                case 0: 
-                    num_vic1=victoria_maqu(tablero,letra_jugador,0);
-                    num_vic2=victoria_maqu(tablero,letra_jugador,3);
-                    num_vic3=victoria_maqu(tablero,letra_jugador,6);
-                    if(num_vic1<10){
-                        tablero= tablero_juego(tablero,letra,num_vic1);
-                        return tablero;
-                    }else if(num_vic2<10){
-                        tablero= tablero_juego(tablero,letra,num_vic2);
-                        return tablero;
-                    }else if(num_vic3<10){
-                        tablero= tablero_juego(tablero,letra,num_vic3);
-                        return tablero;
-                    }
+            case 0: 
+                num_vic1=victoria_maqu(tablero,letra_jugador,0);
+                num_vic2=victoria_maqu(tablero,letra_jugador,3);
+                num_vic3=victoria_maqu(tablero,letra_jugador,6);
+                if(num_vic1<10){
+                    tablero= tablero_juego(tablero,letra,num_vic1);
+                    return tablero;
+                }else if(num_vic2<10){
+                    tablero= tablero_juego(tablero,letra,num_vic2);
+                    return tablero;
+                }else if(num_vic3<10){
+                    tablero= tablero_juego(tablero,letra,num_vic3);
+                    return tablero;
+                }
 
-                    if(tablero[1]==letra_jugador){
-                        rand_juego=1;
-                    }else if(tablero[3]==letra_jugador){
-                        rand_juego=2;
-                    }else if(tablero[4]==letra_jugador){
-                        rand_juego=3;
-                    }else if(tablero[2]==letra_jugador){
-                        rand_juego=4;
-                    }else if(tablero[6]==letra_jugador){
-                        rand_juego=6;
-                    }else if(tablero[8]==letra_jugador){
-                        rand_juego=5;
-                    }else{
-                        rand_juego=1+rand()%(6-1);
-                    }
-                    
-                    switch (rand_juego)
-                    {
-                    case 1:
-                        if (tablero[2]==' '){
-                        tablero= tablero_juego(tablero,letra,3);
-                        cout<<"caso: "<<1.1<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 2:
-                        if (tablero[6]==' '){
-                        tablero= tablero_juego(tablero,letra,7);
-                        cout<<"caso: "<<1.2<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 3:
-                        if (tablero[8]==' '){
-                        tablero= tablero_juego(tablero,letra,9);
-                        cout<<"caso: "<<1.3<<endl;
-                        return tablero;
-                        }
-                        break; 
-                    
-                    case 4:
-                        if (tablero[1]==' '){
-                        tablero= tablero_juego(tablero,letra,2);
-                        cout<<"caso: "<<1.4<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 5:
-                        if (tablero[4]==' '){
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<1.5<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 6:
-                        if (tablero[3]==' '){
-                        tablero= tablero_juego(tablero,letra,4);
-                        cout<<"caso: "<<1.6<<endl;
-                        return tablero;
-                        }
-                        break; 
-                    default:
-                        break;
-                    }
+                if(tablero[1]==letra_jugador){
+                    rand_juego=1;
+                }else if(tablero[3]==letra_jugador){
+                    rand_juego=2;
+                }else if(tablero[4]==letra_jugador){
+                    rand_juego=3;
+                }else if(tablero[2]==letra_jugador){
+                    rand_juego=4;
+                }else if(tablero[6]==letra_jugador){
+                    rand_juego=6;
+                }else if(tablero[8]==letra_jugador){
+                    rand_juego=5;
+                }else{
+                    rand_juego=1+rand()%(6-1);
+                }
                 
-                case 1:     
-
-                    num_vic1=victoria_maqu(tablero,letra_jugador,0);
-                    num_vic2=victoria_maqu(tablero,letra_jugador,4);
-                    
-                    if(num_vic1<10){
-                        tablero= tablero_juego(tablero,letra,num_vic1);
-                        return tablero;
-                    }else if(num_vic2<10){
-                        tablero= tablero_juego(tablero,letra,num_vic2);
-                        return tablero;
-                    }                              
-                    if(tablero[4]==letra_jugador){
-                        rand_juego=1;
-                    }else if(tablero[7]==letra_jugador){
-                        rand_juego=2;
-                    }else{
-                        rand_juego=1+rand()%(2-1);
+                switch (rand_juego)
+                {
+                case 1:
+                    if (tablero[2]==' '){
+                    tablero= tablero_juego(tablero,letra,3);
+                    cout<<"caso: "<<1.1<<endl;
+                    return tablero;
                     }
-                    
-                    switch (rand_juego)
-                    {
-                    case 1:
-                        if (tablero[7]==' '){
-                        tablero= tablero_juego(tablero,letra,8);
-                        cout<<"caso: "<<2.1<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 2:
-                        if (tablero[4]==' '){
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<2.2<<endl;
-                        return tablero;
-                        }
-                        break;                    
-                    default:
-                        break;
-                    }
-
-                
+                    break;
                 case 2:
-                    num_vic1=victoria_maqu(tablero,letra_jugador,0);
-                    num_vic2=victoria_maqu(tablero,letra_jugador,5);
-                    num_vic3=victoria_maqu(tablero,letra_jugador,7);
-                    if(num_vic1<10){
-                        tablero= tablero_juego(tablero,letra,num_vic1);
-                        return tablero;
-                    }else if(num_vic2<10){
-                        tablero= tablero_juego(tablero,letra,num_vic2);
-                        return tablero;
-                    }else if(num_vic3<10){
-                        tablero= tablero_juego(tablero,letra,num_vic3);
-                        return tablero;
-                    }                
-                    if(tablero[1]==letra_jugador){
-                        rand_juego=1;
-                    }else if(tablero[4]==letra_jugador){
-                        rand_juego=2;
-                    }else if(tablero[5]==letra_jugador){
-                        rand_juego=3;
-                    }else if(tablero[0]==letra_jugador){
-                        rand_juego=4;
-                    }else if(tablero[6]==letra_jugador){
-                        rand_juego=5;
-                    }else if(tablero[8]==letra_jugador){
-                        rand_juego=6;
-                    }else{
-                        rand_juego=1+rand()%(6-1);
+                    if (tablero[6]==' '){
+                    tablero= tablero_juego(tablero,letra,7);
+                    cout<<"caso: "<<1.2<<endl;
+                    return tablero;
                     }
-
-                    switch (rand_juego)
-                    {
-                    case 1:
-                        if (tablero[0]==' '){
-                        tablero= tablero_juego(tablero,letra,1);
-                        cout<<"caso: "<<3.1<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 2:
-                        if (tablero[6]==' '){
-                        tablero= tablero_juego(tablero,letra,7);
-                        cout<<"caso: "<<3.2<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 3:
-                        if (tablero[8]==' '){
-                        tablero= tablero_juego(tablero,letra,9);
-                        cout<<"caso: "<<3.3<<endl;
-                        return tablero;
-                        }
-                        break; 
-                    case 4:
-                        if (tablero[1]==' '){
-                        tablero= tablero_juego(tablero,letra,2);
-                        cout<<"caso: "<<3.4<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 5:
-                        if (tablero[4]==' '){
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<3.5<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 6:
-                        if (tablero[5]==' '){
-                        tablero= tablero_juego(tablero,letra,6);
-                        cout<<"caso: "<<3.6<<endl;
-                        return tablero;
-                        }
-                        break;                    
-                    default:
-                        break;
+                    break;
+                case 3:
+                    if (tablero[8]==' '){
+                    tablero= tablero_juego(tablero,letra,9);
+                    cout<<"caso: "<<1.3<<endl;
+                    return tablero;
                     }
-
-
-                case 3:   
-                    num_vic1=victoria_maqu(tablero,letra_jugador,0);
-                    num_vic2=victoria_maqu(tablero,letra_jugador,1);
-                    if(num_vic1<10){
-                        tablero= tablero_juego(tablero,letra,num_vic1);
-                        return tablero;
-                    }else if(num_vic2<10){
-                        tablero= tablero_juego(tablero,letra,num_vic2);
-                        return tablero;
-                    }                                 
-                    if(tablero[4]==letra_jugador){
-                        rand_juego=1;
-                    }else if(tablero[5]==letra_jugador){
-                        rand_juego=2;
-                    }else{
-                        rand_juego=1+rand()%(2-1);
-                    }
-                    
-                    switch (rand_juego)
-                    {
-                    case 1:
-                        if (tablero[5]==' '){
-                        tablero= tablero_juego(tablero,letra,6);
-                        cout<<"caso: "<<4.1<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 2:
-                        if (tablero[4]==' '){
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<4.2<<endl;
-                        return tablero;
-                        }
-                        break;                    
-                    default:
-                        break;
-                    }                    
+                    break; 
                 
                 case 4:
-                    num_vic1=victoria_maqu(tablero,letra_jugador,6);
-                    num_vic2=victoria_maqu(tablero,letra_jugador,7);                    
-                    if(num_vic1<10){
-                        tablero= tablero_juego(tablero,letra,num_vic1);
-                        return tablero;
-                    }else if(num_vic2<10){
-                        tablero= tablero_juego(tablero,letra,num_vic2);
-                        return tablero;
-                    }           
-                    if(tablero[0]==letra_jugador){
-                        rand_juego=4;
-                    }else if(tablero[2]==letra_jugador){
-                        rand_juego=3;
-                    }else if(tablero[6]==letra_jugador){
-                        rand_juego=2;
-                    }else if(tablero[8]==letra_jugador){
-                        rand_juego=1;
-                    }else{
-                        rand_juego=1+rand()%(4-1);
+                    if (tablero[1]==' '){
+                    tablero= tablero_juego(tablero,letra,2);
+                    cout<<"caso: "<<1.4<<endl;
+                    return tablero;
                     }
-
-                    switch (rand_juego)
-                    {
-                    case 1:
-                        if (tablero[0]==' '){
-                        tablero= tablero_juego(tablero,letra,1);
-                        cout<<"caso: "<<5.1<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 2:
-                        if (tablero[2]==' '){
-                        tablero= tablero_juego(tablero,letra,3);
-                        cout<<"caso: "<<5.2<<endl;
-                        return tablero;
-                        }
-                        break;                    
-                    case 3:
-                        if (tablero[6]==' '){
-                        tablero= tablero_juego(tablero,letra,7);
-                        cout<<"caso: "<<5.3<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 4:
-                        if (tablero[8]==' '){
-                        tablero= tablero_juego(tablero,letra,9);
-                        cout<<"caso: "<<5.4<<endl;
-                        return tablero;
-                        }
-                        break; 
-                    
-                    default:
-                        break;
+                    break;
+                case 5:
+                    if (tablero[4]==' '){
+                    tablero= tablero_juego(tablero,letra,5);
+                    cout<<"caso: "<<1.5<<endl;
+                    return tablero;
                     }
-
-                case 5:    
-                    num_vic1=victoria_maqu(tablero,letra_jugador,5);
-                    num_vic2=victoria_maqu(tablero,letra_jugador,2);
-                    if(num_vic1<10){
-                        tablero= tablero_juego(tablero,letra,num_vic1);
-                        return tablero;
-                    }else if(num_vic2<10){
-                        tablero= tablero_juego(tablero,letra,num_vic2);
-                        return tablero;
-                    }                              
-                    if(tablero[4]==letra_jugador){
-                        rand_juego=1;
-                    }else if(tablero[3]==letra_jugador){
-                        rand_juego=2;
-                    }else{
-                        rand_juego=1+rand()%(2-1);
-                    }
-                    
-                    switch (rand_juego)
-                    {
-                    case 1:
-                        if (tablero[3]==' '){
-                        tablero= tablero_juego(tablero,letra,4);
-                        cout<<"caso: "<<6.1<<endl;                        
-                        return tablero;
-                        }
-                        break;
-                    case 2:
-                        if (tablero[4]==' '){
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<6.2<<endl;
-                        return tablero;
-                        }
-                        break;                    
-                    default:
-                        break;
-                    }   
-                
+                    break;
                 case 6:
-                    num_vic1=victoria_maqu(tablero,letra_jugador,0);
-                    num_vic2=victoria_maqu(tablero,letra_jugador,2);
-                    num_vic3=victoria_maqu(tablero,letra_jugador,7);
-                    if(num_vic1<10){
-                        tablero= tablero_juego(tablero,letra,num_vic1);
-                        return tablero;
-                    }else if(num_vic2<10){
-                        tablero= tablero_juego(tablero,letra,num_vic2);
-                        return tablero;
-                    }else if(num_vic3<10){
-                        tablero= tablero_juego(tablero,letra,num_vic3);
-                        return tablero;
+                    if (tablero[3]==' '){
+                    tablero= tablero_juego(tablero,letra,4);
+                    cout<<"caso: "<<1.6<<endl;
+                    return tablero;
                     }
-                    if(tablero[3]==letra_jugador){
-                        rand_juego=1;
-                    }else if(tablero[4]==letra_jugador){
-                        rand_juego=2;
-                    }else if(tablero[7]==letra_jugador){
-                        rand_juego=3;
-                    }else if(tablero[0]==letra_jugador){
-                        rand_juego=4;
-                    }else if(tablero[2]==letra_jugador){
-                        rand_juego=5;
-                    }else if(tablero[8]==letra_jugador){
-                        rand_juego=6;
-                    }else{
-                        rand_juego=1+rand()%(3-1);
+                    break; 
+                default:
+                    break;
+                }
+            
+            case 1:     
+
+                num_vic1=victoria_maqu(tablero,letra_jugador,0);
+                num_vic2=victoria_maqu(tablero,letra_jugador,4);
+                
+                if(num_vic1<10){
+                    tablero= tablero_juego(tablero,letra,num_vic1);
+                    return tablero;
+                }else if(num_vic2<10){
+                    tablero= tablero_juego(tablero,letra,num_vic2);
+                    return tablero;
+                }                              
+                if(tablero[4]==letra_jugador){
+                    rand_juego=1;
+                }else if(tablero[7]==letra_jugador){
+                    rand_juego=2;
+                }else{
+                    rand_juego=1+rand()%(2-1);
+                }
+                
+                switch (rand_juego)
+                {
+                case 1:
+                    if (tablero[7]==' '){
+                    tablero= tablero_juego(tablero,letra,8);
+                    cout<<"caso: "<<2.1<<endl;
+                    return tablero;
                     }
-                    
-                    switch (rand_juego)
-                    {
-                    case 1:
-                        if (tablero[0]==' '){
-                        tablero= tablero_juego(tablero,letra,1);
-                        cout<<"caso: "<<7.1<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 2:
-                        if (tablero[2]==' '){
-                        tablero= tablero_juego(tablero,letra,3);
-                        cout<<"caso: "<<7.2<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 3:
-                        if (tablero[8]==' '){
-                        tablero= tablero_juego(tablero,letra,9);
-                        cout<<"caso: "<<7.3<<endl;
-                        return tablero;
-                        }
-                        break; 
-                    case 4:
-                        if (tablero[3]==' '){
-                        tablero= tablero_juego(tablero,letra,4);
-                        cout<<"caso: "<<7.4<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 5:
-                        if (tablero[4]==' '){
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<7.5<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 6:
-                        if (tablero[7]==' '){
-                        tablero= tablero_juego(tablero,letra,8);
-                        cout<<"caso: "<<7.6<<endl;
-                        return tablero;
-                        }
-                        break;                     
-                    default:
-                        break; 
+                    break;
+                case 2:
+                    if (tablero[4]==' '){
+                    tablero= tablero_juego(tablero,letra,5);
+                    cout<<"caso: "<<2.2<<endl;
+                    return tablero;
                     }
+                    break;                    
+                default:
+                    break;
+                }
 
-                case 7: 
-                    num_vic1=victoria_maqu(tablero,letra_jugador,2);
-                    num_vic2=victoria_maqu(tablero,letra_jugador,4);
-                    if(num_vic1<10){
-                        tablero= tablero_juego(tablero,letra,num_vic1);
-                        return tablero;
-                    }else if(num_vic2<10){
-                        tablero= tablero_juego(tablero,letra,num_vic2);
-                        return tablero;
-                    }                            
-                    if(tablero[4]==letra_jugador){
-                        rand_juego=1;
-                    }else if(tablero[1]==letra_jugador){
-                        rand_juego=2;
-                    }else{
-                        rand_juego=1+rand()%(2-1);
+            
+            case 2:
+                num_vic1=victoria_maqu(tablero,letra_jugador,0);
+                num_vic2=victoria_maqu(tablero,letra_jugador,5);
+                num_vic3=victoria_maqu(tablero,letra_jugador,7);
+                if(num_vic1<10){
+                    tablero= tablero_juego(tablero,letra,num_vic1);
+                    return tablero;
+                }else if(num_vic2<10){
+                    tablero= tablero_juego(tablero,letra,num_vic2);
+                    return tablero;
+                }else if(num_vic3<10){
+                    tablero= tablero_juego(tablero,letra,num_vic3);
+                    return tablero;
+                }                
+                if(tablero[1]==letra_jugador){
+                    rand_juego=1;
+                }else if(tablero[4]==letra_jugador){
+                    rand_juego=2;
+                }else if(tablero[5]==letra_jugador){
+                    rand_juego=3;
+                }else if(tablero[0]==letra_jugador){
+                    rand_juego=4;
+                }else if(tablero[6]==letra_jugador){
+                    rand_juego=5;
+                }else if(tablero[8]==letra_jugador){
+                    rand_juego=6;
+                }else{
+                    rand_juego=1+rand()%(6-1);
+                }
+
+                switch (rand_juego)
+                {
+                case 1:
+                    if (tablero[0]==' '){
+                    tablero= tablero_juego(tablero,letra,1);
+                    cout<<"caso: "<<3.1<<endl;
+                    return tablero;
                     }
-                    
-                    switch (rand_juego)
-                    {
-                    case 1:
-                        if (tablero[1]==' '){
-                        tablero= tablero_juego(tablero,letra,2);
-                        cout<<"caso: "<<8.1<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 2:
-                        if (tablero[4]==' '){
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<8.2<<endl;
-                        return tablero;
-                        }
-                        break;                    
-                    default:
-                        break;
-                    }  
-
-                case 8:
-                    num_vic1=victoria_maqu(tablero,letra_jugador,2);
-                    num_vic2=victoria_maqu(tablero,letra_jugador,5);
-                    num_vic3=victoria_maqu(tablero,letra_jugador,6);
-                    if(num_vic1<10){
-                        tablero= tablero_juego(tablero,letra,num_vic1);
-                        return tablero;
-                    }else if(num_vic2<10){
-                        tablero= tablero_juego(tablero,letra,num_vic2);
-                        return tablero;
-                    }else if(num_vic3<10){
-                        tablero= tablero_juego(tablero,letra,num_vic3);
-                        return tablero;
-                    }                
-                    if(tablero[4]==letra_jugador){
-                        rand_juego=1;
-                    }else if(tablero[5]==letra_jugador){
-                        rand_juego=2;
-                    }else if(tablero[7]==letra_jugador){
-                        rand_juego=3;
-                    }else if(tablero[0]==letra_jugador){
-                        rand_juego=4;
-                    }else if(tablero[6]==letra_jugador){
-                        rand_juego=5;
-                    }else if(tablero[2]==letra_jugador){
-                        rand_juego=6;
-                    }else{
-                        rand_juego=1+rand()%(6-1);
-                    }                
-
-                    switch (rand_juego)
-                    {
-                    case 1:
-                        if (tablero[0]==' '){
-                        tablero= tablero_juego(tablero,letra,1);
-                        cout<<"caso: "<<9.1<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 2:
-                        if (tablero[2]==' '){
-                        tablero= tablero_juego(tablero,letra,3);
-                        cout<<"caso: "<<9.2<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 3:
-                        if (tablero[6]==' '){
-                        tablero= tablero_juego(tablero,letra,7);
-                        cout<<"caso: "<<9.3<<endl;
-                        return tablero;
-                        }
-                        break; 
-
-                    case 4:
-                        if (tablero[4]==' '){
-                        tablero= tablero_juego(tablero,letra,5);
-                        cout<<"caso: "<<9.4<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 5:
-                        if (tablero[7]==' '){
-                        tablero= tablero_juego(tablero,letra,8);
-                        cout<<"caso: "<<9.5<<endl;
-                        return tablero;
-                        }
-                        break;
-                    case 6:
-                        if (tablero[5]==' '){
-                        tablero= tablero_juego(tablero,letra,6);
-                        cout<<"caso: "<<9.6<<endl;
-                        return tablero;
-                        }
-                        break; 
-
-                    default:
-                        break; 
+                    break;
+                case 2:
+                    if (tablero[6]==' '){
+                    tablero= tablero_juego(tablero,letra,7);
+                    cout<<"caso: "<<3.2<<endl;
+                    return tablero;
                     }
+                    break;
+                case 3:
+                    if (tablero[8]==' '){
+                    tablero= tablero_juego(tablero,letra,9);
+                    cout<<"caso: "<<3.3<<endl;
+                    return tablero;
+                    }
+                    break; 
+                case 4:
+                    if (tablero[1]==' '){
+                    tablero= tablero_juego(tablero,letra,2);
+                    cout<<"caso: "<<3.4<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 5:
+                    if (tablero[4]==' '){
+                    tablero= tablero_juego(tablero,letra,5);
+                    cout<<"caso: "<<3.5<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 6:
+                    if (tablero[5]==' '){
+                    tablero= tablero_juego(tablero,letra,6);
+                    cout<<"caso: "<<3.6<<endl;
+                    return tablero;
+                    }
+                    break;                    
+                default:
+                    break;
+                }
 
-            default:
-               
-                break;
-            }
+
+            case 3:   
+                num_vic1=victoria_maqu(tablero,letra_jugador,0);
+                num_vic2=victoria_maqu(tablero,letra_jugador,1);
+                if(num_vic1<10){
+                    tablero= tablero_juego(tablero,letra,num_vic1);
+                    return tablero;
+                }else if(num_vic2<10){
+                    tablero= tablero_juego(tablero,letra,num_vic2);
+                    return tablero;
+                }                                 
+                if(tablero[4]==letra_jugador){
+                    rand_juego=1;
+                }else if(tablero[5]==letra_jugador){
+                    rand_juego=2;
+                }else{
+                    rand_juego=1+rand()%(2-1);
+                }
+                
+                switch (rand_juego)
+                {
+                case 1:
+                    if (tablero[5]==' '){
+                    tablero= tablero_juego(tablero,letra,6);
+                    cout<<"caso: "<<4.1<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 2:
+                    if (tablero[4]==' '){
+                    tablero= tablero_juego(tablero,letra,5);
+                    cout<<"caso: "<<4.2<<endl;
+                    return tablero;
+                    }
+                    break;                    
+                default:
+                    break;
+                }                    
+            
+            case 4:
+                num_vic1=victoria_maqu(tablero,letra_jugador,6);
+                num_vic2=victoria_maqu(tablero,letra_jugador,7);                    
+                if(num_vic1<10){
+                    tablero= tablero_juego(tablero,letra,num_vic1);
+                    return tablero;
+                }else if(num_vic2<10){
+                    tablero= tablero_juego(tablero,letra,num_vic2);
+                    return tablero;
+                }           
+                if(tablero[0]==letra_jugador){
+                    rand_juego=4;
+                }else if(tablero[2]==letra_jugador){
+                    rand_juego=3;
+                }else if(tablero[6]==letra_jugador){
+                    rand_juego=2;
+                }else if(tablero[8]==letra_jugador){
+                    rand_juego=1;
+                }else{
+                    rand_juego=1+rand()%(4-1);
+                }
+
+                switch (rand_juego)
+                {
+                case 1:
+                    if (tablero[0]==' '){
+                    tablero= tablero_juego(tablero,letra,1);
+                    cout<<"caso: "<<5.1<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 2:
+                    if (tablero[2]==' '){
+                    tablero= tablero_juego(tablero,letra,3);
+                    cout<<"caso: "<<5.2<<endl;
+                    return tablero;
+                    }
+                    break;                    
+                case 3:
+                    if (tablero[6]==' '){
+                    tablero= tablero_juego(tablero,letra,7);
+                    cout<<"caso: "<<5.3<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 4:
+                    if (tablero[8]==' '){
+                    tablero= tablero_juego(tablero,letra,9);
+                    cout<<"caso: "<<5.4<<endl;
+                    return tablero;
+                    }
+                    break; 
+                
+                default:
+                    break;
+                }
+
+            case 5:    
+                num_vic1=victoria_maqu(tablero,letra_jugador,5);
+                num_vic2=victoria_maqu(tablero,letra_jugador,2);
+                if(num_vic1<10){
+                    tablero= tablero_juego(tablero,letra,num_vic1);
+                    return tablero;
+                }else if(num_vic2<10){
+                    tablero= tablero_juego(tablero,letra,num_vic2);
+                    return tablero;
+                }                              
+                if(tablero[4]==letra_jugador){
+                    rand_juego=1;
+                }else if(tablero[3]==letra_jugador){
+                    rand_juego=2;
+                }else{
+                    rand_juego=1+rand()%(2-1);
+                }
+                
+                switch (rand_juego)
+                {
+                case 1:
+                    if (tablero[3]==' '){
+                    tablero= tablero_juego(tablero,letra,4);
+                    cout<<"caso: "<<6.1<<endl;                        
+                    return tablero;
+                    }
+                    break;
+                case 2:
+                    if (tablero[4]==' '){
+                    tablero= tablero_juego(tablero,letra,5);
+                    cout<<"caso: "<<6.2<<endl;
+                    return tablero;
+                    }
+                    break;                    
+                default:
+                    break;
+                }   
+            
+            case 6:
+                num_vic1=victoria_maqu(tablero,letra_jugador,0);
+                num_vic2=victoria_maqu(tablero,letra_jugador,2);
+                num_vic3=victoria_maqu(tablero,letra_jugador,7);
+                if(num_vic1<10){
+                    tablero= tablero_juego(tablero,letra,num_vic1);
+                    return tablero;
+                }else if(num_vic2<10){
+                    tablero= tablero_juego(tablero,letra,num_vic2);
+                    return tablero;
+                }else if(num_vic3<10){
+                    tablero= tablero_juego(tablero,letra,num_vic3);
+                    return tablero;
+                }
+                if(tablero[3]==letra_jugador){
+                    rand_juego=1;
+                }else if(tablero[4]==letra_jugador){
+                    rand_juego=2;
+                }else if(tablero[7]==letra_jugador){
+                    rand_juego=3;
+                }else if(tablero[0]==letra_jugador){
+                    rand_juego=4;
+                }else if(tablero[2]==letra_jugador){
+                    rand_juego=5;
+                }else if(tablero[8]==letra_jugador){
+                    rand_juego=6;
+                }else{
+                    rand_juego=1+rand()%(3-1);
+                }
+                
+                switch (rand_juego)
+                {
+                case 1:
+                    if (tablero[0]==' '){
+                    tablero= tablero_juego(tablero,letra,1);
+                    cout<<"caso: "<<7.1<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 2:
+                    if (tablero[2]==' '){
+                    tablero= tablero_juego(tablero,letra,3);
+                    cout<<"caso: "<<7.2<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 3:
+                    if (tablero[8]==' '){
+                    tablero= tablero_juego(tablero,letra,9);
+                    cout<<"caso: "<<7.3<<endl;
+                    return tablero;
+                    }
+                    break; 
+                case 4:
+                    if (tablero[3]==' '){
+                    tablero= tablero_juego(tablero,letra,4);
+                    cout<<"caso: "<<7.4<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 5:
+                    if (tablero[4]==' '){
+                    tablero= tablero_juego(tablero,letra,5);
+                    cout<<"caso: "<<7.5<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 6:
+                    if (tablero[7]==' '){
+                    tablero= tablero_juego(tablero,letra,8);
+                    cout<<"caso: "<<7.6<<endl;
+                    return tablero;
+                    }
+                    break;                     
+                default:
+                    break; 
+                }
+
+            case 7: 
+                num_vic1=victoria_maqu(tablero,letra_jugador,2);
+                num_vic2=victoria_maqu(tablero,letra_jugador,4);
+                if(num_vic1<10){
+                    tablero= tablero_juego(tablero,letra,num_vic1);
+                    return tablero;
+                }else if(num_vic2<10){
+                    tablero= tablero_juego(tablero,letra,num_vic2);
+                    return tablero;
+                }                            
+                if(tablero[4]==letra_jugador){
+                    rand_juego=1;
+                }else if(tablero[1]==letra_jugador){
+                    rand_juego=2;
+                }else{
+                    rand_juego=1+rand()%(2-1);
+                }
+                
+                switch (rand_juego)
+                {
+                case 1:
+                    if (tablero[1]==' '){
+                    tablero= tablero_juego(tablero,letra,2);
+                    cout<<"caso: "<<8.1<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 2:
+                    if (tablero[4]==' '){
+                    tablero= tablero_juego(tablero,letra,5);
+                    cout<<"caso: "<<8.2<<endl;
+                    return tablero;
+                    }
+                    break;                    
+                default:
+                    break;
+                }  
+
+            case 8:
+                num_vic1=victoria_maqu(tablero,letra_jugador,2);
+                num_vic2=victoria_maqu(tablero,letra_jugador,5);
+                num_vic3=victoria_maqu(tablero,letra_jugador,6);
+                if(num_vic1<10){
+                    tablero= tablero_juego(tablero,letra,num_vic1);
+                    return tablero;
+                }else if(num_vic2<10){
+                    tablero= tablero_juego(tablero,letra,num_vic2);
+                    return tablero;
+                }else if(num_vic3<10){
+                    tablero= tablero_juego(tablero,letra,num_vic3);
+                    return tablero;
+                }                
+                if(tablero[4]==letra_jugador){
+                    rand_juego=1;
+                }else if(tablero[5]==letra_jugador){
+                    rand_juego=2;
+                }else if(tablero[7]==letra_jugador){
+                    rand_juego=3;
+                }else if(tablero[0]==letra_jugador){
+                    rand_juego=4;
+                }else if(tablero[6]==letra_jugador){
+                    rand_juego=5;
+                }else if(tablero[2]==letra_jugador){
+                    rand_juego=6;
+                }else{
+                    rand_juego=1+rand()%(6-1);
+                }                
+
+                switch (rand_juego)
+                {
+                case 1:
+                    if (tablero[0]==' '){
+                    tablero= tablero_juego(tablero,letra,1);
+                    cout<<"caso: "<<9.1<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 2:
+                    if (tablero[2]==' '){
+                    tablero= tablero_juego(tablero,letra,3);
+                    cout<<"caso: "<<9.2<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 3:
+                    if (tablero[6]==' '){
+                    tablero= tablero_juego(tablero,letra,7);
+                    cout<<"caso: "<<9.3<<endl;
+                    return tablero;
+                    }
+                    break; 
+
+                case 4:
+                    if (tablero[4]==' '){
+                    tablero= tablero_juego(tablero,letra,5);
+                    cout<<"caso: "<<9.4<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 5:
+                    if (tablero[7]==' '){
+                    tablero= tablero_juego(tablero,letra,8);
+                    cout<<"caso: "<<9.5<<endl;
+                    return tablero;
+                    }
+                    break;
+                case 6:
+                    if (tablero[5]==' '){
+                    tablero= tablero_juego(tablero,letra,6);
+                    cout<<"caso: "<<9.6<<endl;
+                    return tablero;
+                    }
+                    break; 
+
+                default:
+                    break; 
+                }
+
+        default:
+            
+            break;
         }
+        
     }
     
     while (true)
