@@ -69,6 +69,7 @@ char *tablero_juego(char tablero[9],char letra_jugador,int pos_oponente){
         tablero[pos_oponente-1]=letra_jugador;
         
     }else{
+        cout<< tablero[pos_oponente-1]<<endl;
         cout<< "La posicion ya se encuentra ocupada"<<endl;
     }
     return tablero;
@@ -86,17 +87,123 @@ char juego_maquina(char tablero[9],char letra_jugador){
     return letra_maquina;
 }
 
+
+
+
+int victoria_maqu(char tablero[9], char letra_jugador, int i){
+    
+    char letra_maq = juego_maquina(tablero,letra_jugador);
+
+    switch (i)
+    {
+    case 0:
+        if (tablero[0]==letra_maq && tablero[1]==letra_maq){
+            return 3;                       
+        }else if(tablero[1]==letra_maq && tablero[2]==letra_maq){
+            return 1;
+        }else if(tablero[0]==letra_maq && tablero[2]==letra_maq){
+            return 2;
+        }
+        break;    
+    case 1:
+        if (tablero[3]==letra_maq && tablero[4]==letra_maq){
+            return 6;                       
+        }else if(tablero[4]==letra_maq && tablero[5]==letra_maq){
+            return 4;
+        }else if(tablero[3]==letra_maq && tablero[5]==letra_maq){
+            return 5;
+        }
+        break;   
+    case 2:
+        if (tablero[6]==letra_maq && tablero[7]==letra_maq){
+            return 9;                       
+        }else if(tablero[7]==letra_maq && tablero[8]==letra_maq){
+            return 7;
+        }else if(tablero[6]==letra_maq && tablero[8]==letra_maq){
+            return 8;
+        }
+        break;   
+    case 3:
+        if (tablero[0]==letra_maq && tablero[3]==letra_maq){
+            return 7;                       
+        }else if(tablero[3]==letra_maq && tablero[6]==letra_maq){
+            return 1;
+        }else if(tablero[0]==letra_maq && tablero[6]==letra_maq){
+            return 4;
+        }
+        break;   
+    case 4:
+        if (tablero[1]==letra_maq && tablero[4]==letra_maq){
+            return 8;                       
+        }else if(tablero[4]==letra_maq && tablero[7]==letra_maq){
+            return 2;
+        }else if(tablero[1]==letra_maq && tablero[7]==letra_maq){
+            return 5;
+        }
+        break;   
+    case 5:
+        if (tablero[2]==letra_maq && tablero[5]==letra_maq){
+            return 9;                       
+        }else if(tablero[5]==letra_maq && tablero[8]==letra_maq){
+            return 3;
+        }else if(tablero[2]==letra_maq && tablero[8]==letra_maq){
+            return 6;
+        }
+        break;   
+    case 6:
+        if (tablero[0]==letra_maq && tablero[4]==letra_maq){
+            return 9;                       
+        }else if(tablero[4]==letra_maq && tablero[8]==letra_maq){
+            return 1;
+        }else if(tablero[0]==letra_maq && tablero[8]==letra_maq){
+            return 5;
+        }
+        break;   
+    case 7:
+        if (tablero[6]==letra_maq && tablero[4]==letra_maq){
+            return 3;                       
+        }else if(tablero[4]==letra_maq && tablero[2]==letra_maq){
+            return 7;
+        }else if(tablero[6]==letra_maq && tablero[2]==letra_maq){
+            return 5;
+        }
+        break; 
+    
+    default:
+        break;
+    }
+    return 800;
+}
+
+
+
+
 char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugador){
     int rand_juego = 0;
     srand(time(NULL));
     char letra = juego_maquina(tablero,letra_jugador);
+    int num_vic1=200,num_vic2=200,num_vic3=200;
     for (int i = 1; i < 10; i++)
     {
         if(tablero[i-1]==letra_jugador)
         {
             switch (i)
             {
-                case 1:                    
+                case 1: 
+                    num_vic1=victoria_maqu(tablero,letra_jugador,0);
+                    num_vic2=victoria_maqu(tablero,letra_jugador,3);
+                    num_vic3=victoria_maqu(tablero,letra_jugador,6);
+                    if(num_vic1<10){
+                        tablero= tablero_juego(tablero,letra,num_vic1);
+                        return tablero;
+                    }else if(num_vic2<10){
+                        tablero= tablero_juego(tablero,letra,num_vic2);
+                        return tablero;
+                    }else if(num_vic3<10){
+                        tablero= tablero_juego(tablero,letra,num_vic3);
+                        return tablero;
+                    }
+
                     if(tablero[1]==letra_jugador){
                         rand_juego=1;
                     }else if(tablero[3]==letra_jugador){
@@ -162,7 +269,18 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                         break;
                     }
                 
-                case 2:                    
+                case 2:     
+
+                    num_vic1=victoria_maqu(tablero,letra_jugador,0);
+                    num_vic2=victoria_maqu(tablero,letra_jugador,4);
+                    
+                    if(num_vic1<10){
+                        tablero= tablero_juego(tablero,letra,num_vic1);
+                        return tablero;
+                    }else if(num_vic2<10){
+                        tablero= tablero_juego(tablero,letra,num_vic2);
+                        return tablero;
+                    }                              
                     if(tablero[4]==letra_jugador){
                         rand_juego=1;
                     }else if(tablero[7]==letra_jugador){
@@ -193,6 +311,19 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
 
                 
                 case 3:
+                    num_vic1=victoria_maqu(tablero,letra_jugador,0);
+                    num_vic2=victoria_maqu(tablero,letra_jugador,5);
+                    num_vic3=victoria_maqu(tablero,letra_jugador,7);
+                    if(num_vic1<10){
+                        tablero= tablero_juego(tablero,letra,num_vic1);
+                        return tablero;
+                    }else if(num_vic2<10){
+                        tablero= tablero_juego(tablero,letra,num_vic2);
+                        return tablero;
+                    }else if(num_vic3<10){
+                        tablero= tablero_juego(tablero,letra,num_vic3);
+                        return tablero;
+                    }                
                     if(tablero[1]==letra_jugador){
                         rand_juego=1;
                     }else if(tablero[4]==letra_jugador){
@@ -258,7 +389,16 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     }
 
 
-                case 4:                    
+                case 4:   
+                    num_vic1=victoria_maqu(tablero,letra_jugador,0);
+                    num_vic2=victoria_maqu(tablero,letra_jugador,1);
+                    if(num_vic1<10){
+                        tablero= tablero_juego(tablero,letra,num_vic1);
+                        return tablero;
+                    }else if(num_vic2<10){
+                        tablero= tablero_juego(tablero,letra,num_vic2);
+                        return tablero;
+                    }                                 
                     if(tablero[4]==letra_jugador){
                         rand_juego=1;
                     }else if(tablero[5]==letra_jugador){
@@ -288,6 +428,15 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     }                    
                 
                 case 5:
+                    num_vic1=victoria_maqu(tablero,letra_jugador,6);
+                    num_vic2=victoria_maqu(tablero,letra_jugador,7);                    
+                    if(num_vic1<10){
+                        tablero= tablero_juego(tablero,letra,num_vic1);
+                        return tablero;
+                    }else if(num_vic2<10){
+                        tablero= tablero_juego(tablero,letra,num_vic2);
+                        return tablero;
+                    }           
                     if(tablero[0]==letra_jugador){
                         rand_juego=4;
                     }else if(tablero[2]==letra_jugador){
@@ -335,7 +484,16 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                         break;
                     }
 
-                case 6:                    
+                case 6:    
+                    num_vic1=victoria_maqu(tablero,letra_jugador,5);
+                    num_vic2=victoria_maqu(tablero,letra_jugador,2);
+                    if(num_vic1<10){
+                        tablero= tablero_juego(tablero,letra,num_vic1);
+                        return tablero;
+                    }else if(num_vic2<10){
+                        tablero= tablero_juego(tablero,letra,num_vic2);
+                        return tablero;
+                    }                              
                     if(tablero[4]==letra_jugador){
                         rand_juego=1;
                     }else if(tablero[3]==letra_jugador){
@@ -365,6 +523,19 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     }   
                 
                 case 7:
+                    num_vic1=victoria_maqu(tablero,letra_jugador,0);
+                    num_vic2=victoria_maqu(tablero,letra_jugador,2);
+                    num_vic3=victoria_maqu(tablero,letra_jugador,7);
+                    if(num_vic1<10){
+                        tablero= tablero_juego(tablero,letra,num_vic1);
+                        return tablero;
+                    }else if(num_vic2<10){
+                        tablero= tablero_juego(tablero,letra,num_vic2);
+                        return tablero;
+                    }else if(num_vic3<10){
+                        tablero= tablero_juego(tablero,letra,num_vic3);
+                        return tablero;
+                    }
                     if(tablero[3]==letra_jugador){
                         rand_juego=1;
                     }else if(tablero[4]==letra_jugador){
@@ -429,7 +600,16 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                         break; 
                     }
 
-                case 8:                    
+                case 8: 
+                    num_vic1=victoria_maqu(tablero,letra_jugador,2);
+                    num_vic2=victoria_maqu(tablero,letra_jugador,4);
+                    if(num_vic1<10){
+                        tablero= tablero_juego(tablero,letra,num_vic1);
+                        return tablero;
+                    }else if(num_vic2<10){
+                        tablero= tablero_juego(tablero,letra,num_vic2);
+                        return tablero;
+                    }                            
                     if(tablero[4]==letra_jugador){
                         rand_juego=1;
                     }else if(tablero[1]==letra_jugador){
@@ -459,6 +639,19 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     }  
 
                 case 9:
+                    num_vic1=victoria_maqu(tablero,letra_jugador,2);
+                    num_vic2=victoria_maqu(tablero,letra_jugador,5);
+                    num_vic3=victoria_maqu(tablero,letra_jugador,6);
+                    if(num_vic1<10){
+                        tablero= tablero_juego(tablero,letra,num_vic1);
+                        return tablero;
+                    }else if(num_vic2<10){
+                        tablero= tablero_juego(tablero,letra,num_vic2);
+                        return tablero;
+                    }else if(num_vic3<10){
+                        tablero= tablero_juego(tablero,letra,num_vic3);
+                        return tablero;
+                    }                
                     if(tablero[4]==letra_jugador){
                         rand_juego=1;
                     }else if(tablero[5]==letra_jugador){
@@ -632,36 +825,53 @@ int victoria(char tablero[9], char letra_jugador){
         
     }
     
-
-
     return 0;
+}
+
+
+int juego(char tablero_blanco[9], char letra_jugador,int contador_jugadas,int rev_victoria){
+        int pos_oponente = pos_juego();
+        char *tablero = tablero_juego(tablero_blanco,letra_jugador,pos_oponente);
+        print_board(tablero);
+        rev_victoria = victoria(tablero, letra_jugador);
+        if(rev_victoria==20){
+            return 1;
+        }
+        if(contador_jugadas==9){
+            cout<<"Se ha llegado a un empate. "<<endl;
+            return 0;
+        }  
+        cout<<"--------------"<<endl;
+        cout<<"Jugada máquina: "<<endl;
+        tablero = jugadas_victoria_2(tablero,contador_jugadas,letra_jugador);        
+        print_board(tablero);
+        rev_victoria = victoria(tablero, letra_jugador);
+        if(rev_victoria==20){
+            return 1;
+        }
+        return -1;
 }
 
 
 int main(){
     char letra_jugador = incializacion();
     char tablero_blanco[9]={' ',' ',' ',' ',' ',' ',' ',' ',' '};
-    int contador_jugadas=0;
+    int contador_jugadas=1;
     int rev_victoria = 0;
+    int cont_juego =-1;
     print_first_board();
 
-    while(contador_jugadas<8){
-        int pos_oponente = pos_juego();
-        char *tablero = tablero_juego(tablero_blanco,letra_jugador,pos_oponente);
-        print_board(tablero);
-        cout<<"--------------"<<endl;
-        cout<<"Jugada máquina: "<<endl;
-        tablero = jugadas_victoria_2(tablero,contador_jugadas,letra_jugador);        
-        print_board(tablero);
-        rev_victoria = victoria(tablero, letra_jugador);
-        contador_jugadas=contador_jugadas+rev_victoria+1;
+    while(contador_jugadas<10){
+        cont_juego = juego(tablero_blanco,letra_jugador,contador_jugadas,rev_victoria);
+        if(cont_juego==1){
+            contador_jugadas=800;
+            break;
+        }else if(cont_juego==0){
+            contador_jugadas=800;
+            break;
+        }
+        contador_jugadas=contador_jugadas+2;
     }
-
-    if(contador_jugadas==8){
-        cout<<"Se ha llegado a un empate. "<<endl;
-    }
-
-
 
     return 0;
 }
