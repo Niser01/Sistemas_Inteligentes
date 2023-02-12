@@ -97,74 +97,74 @@ int victoria_maqu(char tablero[9], char letra_jugador, int i){
     switch (i)
     {
     case 0:
-        if (tablero[0]==letra_maq && tablero[1]==letra_maq){
+        if (tablero[0]==letra_maq && tablero[1]==letra_maq && tablero[2]==' '){
             return 3;                       
-        }else if(tablero[1]==letra_maq && tablero[2]==letra_maq){
+        }else if(tablero[1]==letra_maq && tablero[2]==letra_maq && tablero[0]==' '){
             return 1;
-        }else if(tablero[0]==letra_maq && tablero[2]==letra_maq){
+        }else if(tablero[0]==letra_maq && tablero[2]==letra_maq && tablero[1]==' '){
             return 2;
         }
         break;    
     case 1:
-        if (tablero[3]==letra_maq && tablero[4]==letra_maq){
+        if (tablero[3]==letra_maq && tablero[4]==letra_maq && tablero[5]==' '){
             return 6;                       
-        }else if(tablero[4]==letra_maq && tablero[5]==letra_maq){
+        }else if(tablero[4]==letra_maq && tablero[5]==letra_maq && tablero[3]==' '){
             return 4;
-        }else if(tablero[3]==letra_maq && tablero[5]==letra_maq){
+        }else if(tablero[3]==letra_maq && tablero[5]==letra_maq && tablero[4]==' '){
             return 5;
         }
         break;   
     case 2:
-        if (tablero[6]==letra_maq && tablero[7]==letra_maq){
+        if (tablero[6]==letra_maq && tablero[7]==letra_maq && tablero[8]==' '){
             return 9;                       
-        }else if(tablero[7]==letra_maq && tablero[8]==letra_maq){
+        }else if(tablero[7]==letra_maq && tablero[8]==letra_maq && tablero[6]==' '){
             return 7;
-        }else if(tablero[6]==letra_maq && tablero[8]==letra_maq){
+        }else if(tablero[6]==letra_maq && tablero[8]==letra_maq && tablero[7]==' '){
             return 8;
         }
         break;   
     case 3:
-        if (tablero[0]==letra_maq && tablero[3]==letra_maq){
+        if (tablero[0]==letra_maq && tablero[3]==letra_maq && tablero[6]==' '){
             return 7;                       
-        }else if(tablero[3]==letra_maq && tablero[6]==letra_maq){
+        }else if(tablero[3]==letra_maq && tablero[6]==letra_maq && tablero[0]==' '){
             return 1;
-        }else if(tablero[0]==letra_maq && tablero[6]==letra_maq){
+        }else if(tablero[0]==letra_maq && tablero[6]==letra_maq && tablero[3]==' '){
             return 4;
         }
         break;   
     case 4:
-        if (tablero[1]==letra_maq && tablero[4]==letra_maq){
+        if (tablero[1]==letra_maq && tablero[4]==letra_maq && tablero[7]==' '){
             return 8;                       
-        }else if(tablero[4]==letra_maq && tablero[7]==letra_maq){
+        }else if(tablero[4]==letra_maq && tablero[7]==letra_maq && tablero[1]==' '){
             return 2;
-        }else if(tablero[1]==letra_maq && tablero[7]==letra_maq){
+        }else if(tablero[1]==letra_maq && tablero[7]==letra_maq && tablero[4]==' '){
             return 5;
         }
         break;   
     case 5:
-        if (tablero[2]==letra_maq && tablero[5]==letra_maq){
+        if (tablero[2]==letra_maq && tablero[5]==letra_maq && tablero[8]==' '){
             return 9;                       
-        }else if(tablero[5]==letra_maq && tablero[8]==letra_maq){
+        }else if(tablero[5]==letra_maq && tablero[8]==letra_maq && tablero[2]==' '){
             return 3;
-        }else if(tablero[2]==letra_maq && tablero[8]==letra_maq){
+        }else if(tablero[2]==letra_maq && tablero[8]==letra_maq && tablero[5]==' '){
             return 6;
         }
         break;   
     case 6:
-        if (tablero[0]==letra_maq && tablero[4]==letra_maq){
+        if (tablero[0]==letra_maq && tablero[4]==letra_maq && tablero[8]==' '){
             return 9;                       
-        }else if(tablero[4]==letra_maq && tablero[8]==letra_maq){
+        }else if(tablero[4]==letra_maq && tablero[8]==letra_maq && tablero[0]==' '){
             return 1;
-        }else if(tablero[0]==letra_maq && tablero[8]==letra_maq){
+        }else if(tablero[0]==letra_maq && tablero[8]==letra_maq && tablero[4]==' '){
             return 5;
         }
         break;   
     case 7:
-        if (tablero[6]==letra_maq && tablero[4]==letra_maq){
+        if (tablero[6]==letra_maq && tablero[4]==letra_maq && tablero[2]==' '){
             return 3;                       
-        }else if(tablero[4]==letra_maq && tablero[2]==letra_maq){
+        }else if(tablero[4]==letra_maq && tablero[2]==letra_maq && tablero[6]==' '){
             return 7;
-        }else if(tablero[6]==letra_maq && tablero[2]==letra_maq){
+        }else if(tablero[6]==letra_maq && tablero[2]==letra_maq && tablero[4]==' '){
             return 5;
         }
         break; 
@@ -183,13 +183,13 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
     srand(time(NULL));
     char letra = juego_maquina(tablero,letra_jugador);
     int num_vic1=200,num_vic2=200,num_vic3=200;
-    for (int i = 1; i < 10; i++)
+    for (int i = 0; i < 9; i++)
     {
-        if(tablero[i-1]==letra_jugador)
+        if(tablero[i]==letra_jugador)
         {
             switch (i)
             {
-                case 1: 
+                case 0: 
                     num_vic1=victoria_maqu(tablero,letra_jugador,0);
                     num_vic2=victoria_maqu(tablero,letra_jugador,3);
                     num_vic3=victoria_maqu(tablero,letra_jugador,6);
@@ -269,7 +269,7 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                         break;
                     }
                 
-                case 2:     
+                case 1:     
 
                     num_vic1=victoria_maqu(tablero,letra_jugador,0);
                     num_vic2=victoria_maqu(tablero,letra_jugador,4);
@@ -310,7 +310,7 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     }
 
                 
-                case 3:
+                case 2:
                     num_vic1=victoria_maqu(tablero,letra_jugador,0);
                     num_vic2=victoria_maqu(tablero,letra_jugador,5);
                     num_vic3=victoria_maqu(tablero,letra_jugador,7);
@@ -389,7 +389,7 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                     }
 
 
-                case 4:   
+                case 3:   
                     num_vic1=victoria_maqu(tablero,letra_jugador,0);
                     num_vic2=victoria_maqu(tablero,letra_jugador,1);
                     if(num_vic1<10){
@@ -427,7 +427,7 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                         break;
                     }                    
                 
-                case 5:
+                case 4:
                     num_vic1=victoria_maqu(tablero,letra_jugador,6);
                     num_vic2=victoria_maqu(tablero,letra_jugador,7);                    
                     if(num_vic1<10){
@@ -484,7 +484,7 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                         break;
                     }
 
-                case 6:    
+                case 5:    
                     num_vic1=victoria_maqu(tablero,letra_jugador,5);
                     num_vic2=victoria_maqu(tablero,letra_jugador,2);
                     if(num_vic1<10){
@@ -522,7 +522,7 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                         break;
                     }   
                 
-                case 7:
+                case 6:
                     num_vic1=victoria_maqu(tablero,letra_jugador,0);
                     num_vic2=victoria_maqu(tablero,letra_jugador,2);
                     num_vic3=victoria_maqu(tablero,letra_jugador,7);
@@ -600,7 +600,7 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                         break; 
                     }
 
-                case 8: 
+                case 7: 
                     num_vic1=victoria_maqu(tablero,letra_jugador,2);
                     num_vic2=victoria_maqu(tablero,letra_jugador,4);
                     if(num_vic1<10){
@@ -638,7 +638,7 @@ char *jugadas_victoria_2(char tablero[9], int contador_jugadas, char letra_jugad
                         break;
                     }  
 
-                case 9:
+                case 8:
                     num_vic1=victoria_maqu(tablero,letra_jugador,2);
                     num_vic2=victoria_maqu(tablero,letra_jugador,5);
                     num_vic3=victoria_maqu(tablero,letra_jugador,6);
