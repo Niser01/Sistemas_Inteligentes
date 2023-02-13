@@ -578,7 +578,16 @@ int victoria(char tablero[9], char letra_jugador){
 }
 
 
-int juego(char tablero_blanco[9], char letra_jugador,int contador_jugadas){
+int juego(char tablero_blanco[9], char letra_jugador){
+        int contador_jugadas=0;
+        for (int j = 0; j < 9; j++)
+        {
+            if (tablero_blanco[j]==' ')
+            {
+                contador_jugadas++;
+            }        
+        }
+        
         int rev_victoria = 0;
         int pos_oponente = pos_juego();
         char *tablero = tablero_juego(tablero_blanco,letra_jugador,pos_oponente);
@@ -605,20 +614,16 @@ int juego(char tablero_blanco[9], char letra_jugador,int contador_jugadas){
 int main(){
     char letra_jugador = incializacion();
     char tablero_blanco[9]={' ',' ',' ',' ',' ',' ',' ',' ',' '};
-    int contador_jugadas=1;
     int cont_juego =-1;
     print_first_board();
 
-    while(contador_jugadas<10){
-        cont_juego = juego(tablero_blanco,letra_jugador,contador_jugadas);
+    while(true){
+        cont_juego = juego(tablero_blanco,letra_jugador);
         if(cont_juego==1){
-            contador_jugadas=800;
             break;
         }else if(cont_juego==0){
-            contador_jugadas=800;
             break;
         }
-        contador_jugadas=contador_jugadas+2;
     }
 
     return 0;
