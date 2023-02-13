@@ -578,7 +578,42 @@ int victoria(char tablero[9], char letra_jugador){
 }
 
 
-int juego(char tablero_blanco[9], char letra_jugador){
+int juego_o(char tablero_blanco[9]){
+        char letra_jugador = 'o';
+        int contador_jugadas=0;
+        for (int j = 0; j < 9; j++)
+        {
+            if (tablero_blanco[j]==' ')
+            {
+                contador_jugadas++;
+            }        
+        }
+        
+        int rev_victoria = 0;
+        int pos_oponente = pos_juego();
+        char *tablero = tablero_juego(tablero_blanco,letra_jugador,pos_oponente);
+        print_board(tablero);
+        rev_victoria = victoria(tablero, letra_jugador);
+        if(rev_victoria==20){
+            return 1;
+        }
+        if(contador_jugadas==9){
+            cout<<"Se ha llegado a un empate. "<<endl;
+            return 0;
+        }  
+        cout<<"--------------"<<endl;
+        cout<<"Jugada máquina: "<<endl;
+        tablero = jugadas_victoria_2(tablero,contador_jugadas,letra_jugador);        
+        print_board(tablero);
+        rev_victoria = victoria(tablero, letra_jugador);
+        if(rev_victoria==20){
+            return 1;
+        }
+        return -1;
+}
+
+int juego_x(char tablero_blanco[9]){
+        char letra_jugador='x';
         int contador_jugadas=0;
         for (int j = 0; j < 9; j++)
         {
@@ -617,14 +652,30 @@ int main(){
     int cont_juego =-1;
     print_first_board();
 
-    while(true){
-        cont_juego = juego(tablero_blanco,letra_jugador);
-        if(cont_juego==1){
-            break;
-        }else if(cont_juego==0){
-            break;
+
+    if (letra_jugador == 'X' || letra_jugador =='x')
+    {
+        while(true){
+            cont_juego = juego_x(tablero_blanco);
+            if(cont_juego==1){
+                break;
+            }else if(cont_juego==0){
+                break;
+            }
         }
+    }else{
+        while(true){
+            cont_juego = juego_o(tablero_blanco);
+            if(cont_juego==1){
+                break;
+            }else if(cont_juego==0){
+                break;
+            }
+        }        
     }
+    
+
+    
 
     return 0;
 }
