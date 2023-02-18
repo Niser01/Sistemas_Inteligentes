@@ -1,76 +1,48 @@
 import math
+import random
 
-available_moves = [0,1,2,3,4,5,6,7,8]
-who_started = ""
-board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-corners = [0,2,6,8]
-middles = [1,3,5,7]
-center = 4
-
-class TicTacToe:
-    #Definición inicial del tablero y el símbolo que representa al jugador
+class agent:
     def __init__(self):
-        self.player = 'X'
+        self.player = ''
+        self.board = []
+        self.available_moves = []
 
-    #Función para imprimir el tablero en consola
-    def display_board(self):
-        print(f' {board[0]} | {board[1]} | {board[2]} ')
-        print('---+---+---')
-        print(f' {board[3]} | {board[4]} | {board[5]} ')
-        print('---+---+---')
-        print(f' {board[6]} | {board[7]} | {board[8]} ')
+    def update_board(self, board):
+        self.available_moves = []
+        for i in range(len(board)):
+            if board[i] == ' ':
+                self.available_moves.append(i)
+        self.board = board
 
-    #Función que le permite al jugador hacer una movida
-    def player_move(self):
-        move = int(input("Realiza tu movimiento (1-9): ")) - 1
-        if board[move] == ' ':
-            board[move] = self.player
-            available_moves.remove(move)
-            self.display_board()
-        else:
-            print("La posición ya está ocupada.")
-            self.player_move()
-
+    def update_player(self, player):
+        self.player = player
+    
     #Función que decide el movimiento de la máquina
     def computer_move(self):
-
-        #Criterio de decisión
-        #if who_started == "O":
-        #    move = random.randint(0, len(corners)-1)
-        #    corners.remove(move)
-        move = self.minimax(board, "O", available_moves)["p"]
-
-        board[move] = 'O'
-        available_moves.remove(move)
+        if "X" not in self.board:
+            corners = [0,2,6,8]
+            move = corners[random.randint(0, 3)]
+        else:
+             move = self.minimax(self.board, self.player, self.available_moves)["p"]
+        self.board[move] = self.player
+        self.available_moves.remove(move)
         print("El ordenador movió:")
-        self.display_board()
+        return self.board
 
-    #Ver si ya hay un ganador
-    def winner(self, temporal_board):
-        winning_combinations = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Filas
-            [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Columnas
-            [0, 4, 8], [2, 4, 6]  # Diagonales
-        ]
-        for combination in winning_combinations:
-            if temporal_board[combination[0]] == temporal_board[combination[1]] == temporal_board[combination[2]] and temporal_board[combination[0]] != ' ':
-                return temporal_board[combination[0]]
-
-        return None
-    
     #Algoritmo minimax
     def minimax(self, board_list, player, temporal_avaible_moves):
         #Position - Score
-        if self.winner(board_list) == "X":
+        result = self.winner(board_list)
+        if result != self.player and result is not None:
             return {"p": None, "s": 1 * (len(temporal_avaible_moves) + 1)}
-        elif self.winner(board_list) == "O":
+        elif result == self.player:
             return {"p": None, "s": -1 * (len(temporal_avaible_moves) + 1)}
         elif ' ' not in board_list:
             return {"p": None, "s": 0}
         else:
-            if player == "X":
+            if player != self.player:
                 best = {"p": -1, "s": -math.inf}
-            elif player == "O":
+            elif player == self.player:
                 best = {"p": -1, "s": math.inf}
             
             for move in temporal_avaible_moves:
@@ -81,47 +53,126 @@ class TicTacToe:
                 sim_score = self.minimax(new_board, "O" if player == "X" else "X", t_a_m)
                 sim_score["p"] = int(move)
 
-                if player == "X":
-                    if (sim_score["s"] > best["s"]) and sim_score["p"] in available_moves:
+                if player != self.player:
+                    if (sim_score["s"] > best["s"]) and sim_score["p"] in self.available_moves:
                         best = sim_score
                 else:
-                    if (sim_score["s"] < best["s"]) and sim_score["p"] in available_moves:
+                    if (sim_score["s"] < best["s"]) and sim_score["p"] in self.available_moves:
                         best = sim_score
             
             return best
 
+    #Ver si ya hay un ganador
+    def winner(self, temporal_board):
+        winning_combinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Filas
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Columnas
+            [0, 4, 8], [2, 4, 6]  # Diagonales
+        ]
+        for combination in winning_combinations:
+            #print(combination[0])
+            #print(temporal_board)
+            #print(temporal_board[combination[0]])
+            if temporal_board[combination[0]] == temporal_board[combination[1]] == temporal_board[combination[2]] and temporal_board[combination[0]] != ' ':
+                return temporal_board[combination[0]]
+
+        return None
+
+class TicTacToe:
+    #Definición inicial del tablero y el símbolo que representa al jugador
+    def __init__(self):
+        self.player = ''
+        self.available_moves = [0,1,2,3,4,5,6,7,8]
+        self.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+
+    #Función para imprimir el tablero en consola
+    def display_board(self):
+        print(f' {self.board[0]} | {self.board[1]} | {self.board[2]} ')
+        print('---+---+---')
+        print(f' {self.board[3]} | {self.board[4]} | {self.board[5]} ')
+        print('---+---+---')
+        print(f' {self.board[6]} | {self.board[7]} | {self.board[8]} ')
+
+    #Función que le permite al jugador hacer una movida
+    def player_move(self):
+        move = int(input("Realiza tu movimiento (1-9): ")) - 1
+        if self.board[move] == ' ':
+            self.board[move] = self.player
+            self.available_moves.remove(move)
+        else:
+            print("La posición ya está ocupada.")
+            self.player_move()
+
+    #Ver si ya hay un ganador
+    def winner(self, temporal_board):
+        winning_combinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Filas
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Columnas
+            [0, 4, 8], [2, 4, 6]  # Diagonales
+        ]
+        for combination in winning_combinations:
+            if temporal_board[combination[0]] == temporal_board[combination[1]] == temporal_board[combination[2]] and temporal_board[combination[0]] != ' ':
+               return temporal_board[combination[0]]
+
+        return None
+
     #Fin del juego
     def game_over(self):
-        if self.winner(board) or ' ' not in board:
+        if self.winner(self.board) or ' ' not in self.board:
             return True
         return False
 
     #Función Main de la clase
     def play(self):
+        IA = agent()
 
-        print("Bienvenido al juego")
-        print("Tu serás las 'X' y el computador el 'O'")
-        first_player = input("¿Deseas ser el primero en jugar? (y/n) ")
-        
-        while first_player != 'y' and first_player != 'n':
-            first_player = input("Simbolo incorrecto, intentalo nuevamente.")
+        while True:
+            print("Bienvenido al juego")
+            current_player = input("¿Deseas ser el primero en jugar? (y/n) ")
+            
+            while current_player != 'y' and current_player != 'n':
+                current_player = input("Simbolo incorrecto, intentalo nuevamente.")
 
-        who_started = "X" if first_player=="y" else "O"
-
-        self.display_board()
-        while not self.game_over():
-            if first_player == 'y':
-                self.player_move()
-                first_player = 'n'
+            if current_player == 'y':
+                self.player = "X"
+                IA.update_player("O")
             else:
-                self.computer_move()
-                first_player = 'y'
-            if self.winner(board) == 'X':
-                print("¡Ganaste!")
-            elif self.winner(board) == 'O':
-                print("El computador te ganó")
-            elif ' ' not in board:
-                print("Empate")
+                self.player = "O"
+                IA.update_player("X")
+
+            self.display_board()
+
+            while not self.game_over():
+                if current_player == 'y':
+                    self.player_move()
+                    current_player = 'n'
+                    IA.update_board(self.board)
+                    self.display_board()
+                else:
+                    IA.update_board(self.board)
+                    self.board = IA.computer_move()
+                    self.display_board()
+                    current_player = 'y'
+                result = self.winner(self.board)
+                if result == self.player:
+                    print("¡Ganaste!")
+                elif result != self.player and result is not None:
+                    print("El computador te ganó")
+                elif ' ' not in self.board:
+                    print("Empate")
+
+            new_game = input("Presione 's' para jugar nuevamente o 'e' para cerrar el programa definitivamente")
+
+            while new_game != 's' and new_game != 'e':
+                new_game = input("Simbolo incorrecto, intentalo nuevamente.")
+
+            if new_game == 's':
+                self.player = ''
+                self.available_moves = [0,1,2,3,4,5,6,7,8]
+                self.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+                continue
+            else:
+                break
 
 game = TicTacToe()
 game.play()
