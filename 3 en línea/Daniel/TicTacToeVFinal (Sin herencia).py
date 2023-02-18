@@ -22,7 +22,7 @@ class agent:
             corners = [0,2,6,8]
             move = corners[random.randint(0, 3)]
         else:
-             move = self.minimax(self.board, self.player, self.available_moves)["p"]
+            move = self.minimax(self.board, self.player, self.available_moves)["p"]
         self.board[move] = self.player
         self.available_moves.remove(move)
         print("El ordenador movió:")
@@ -109,7 +109,7 @@ class TicTacToe:
         ]
         for combination in winning_combinations:
             if temporal_board[combination[0]] == temporal_board[combination[1]] == temporal_board[combination[2]] and temporal_board[combination[0]] != ' ':
-               return temporal_board[combination[0]]
+                return temporal_board[combination[0]]
 
         return None
 
