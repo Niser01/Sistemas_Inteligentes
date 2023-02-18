@@ -37,7 +37,7 @@ class agent(TheUniverse):
             corners = [0,2,6,8]
             move = corners[random.randint(0, 3)]
         else:
-             move = self.minimax(self.board, self.player, self.available_moves)["p"]
+            move = self.minimax(self.board, self.player, self.available_moves)["p"]
         self.board[move] = self.player
         self.available_moves.remove(move)
         print("El ordenador movió:")
