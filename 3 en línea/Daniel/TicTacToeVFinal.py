@@ -2,22 +2,21 @@ import math
 import random
 
 class agent:
+    #Constructor del agente
     def __init__(self):
         self.player = ''
         self.board = []
         self.available_moves = []
 
+    #Nueva percepción del tablero
     def update_board(self, board):
         self.available_moves = []
         for i in range(len(board)):
             if board[i] == ' ':
                 self.available_moves.append(i)
         self.board = board
-
-    def update_player(self, player):
-        self.player = player
     
-    #Función que decide el movimiento de la máquina
+    #Función que decide el movimiento del agente
     def computer_move(self):
         if "X" not in self.board:
             corners = [0,2,6,8]
@@ -70,18 +69,16 @@ class agent:
             [0, 4, 8], [2, 4, 6]  # Diagonales
         ]
         for combination in winning_combinations:
-            #print(combination[0])
-            #print(temporal_board)
-            #print(temporal_board[combination[0]])
             if temporal_board[combination[0]] == temporal_board[combination[1]] == temporal_board[combination[2]] and temporal_board[combination[0]] != ' ':
                 return temporal_board[combination[0]]
 
         return None
 
 class TicTacToe:
-    #Definición inicial del tablero y el símbolo que representa al jugador
+    #Definición inicial de las variables del entorno
     def __init__(self):
         self.player = ''
+        self.IA = agent()
         self.available_moves = [0,1,2,3,4,5,6,7,8]
         self.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
@@ -124,8 +121,7 @@ class TicTacToe:
 
     #Función Main de la clase
     def play(self):
-        IA = agent()
-
+        #Ciclo principal
         while True:
             print("Bienvenido al juego")
             current_player = input("¿Deseas ser el primero en jugar? (y/n) ")
@@ -135,22 +131,23 @@ class TicTacToe:
 
             if current_player == 'y':
                 self.player = "X"
-                IA.update_player("O")
+                self.IA.player = "O"
             else:
                 self.player = "O"
-                IA.update_player("X")
+                self.IA.player = "X"
 
             self.display_board()
 
+            #Ciclo de una partida
             while not self.game_over():
                 if current_player == 'y':
                     self.player_move()
                     current_player = 'n'
-                    IA.update_board(self.board)
+                    self.IA.update_board(self.board)
                     self.display_board()
                 else:
-                    IA.update_board(self.board)
-                    self.board = IA.computer_move()
+                    self.IA.update_board(self.board)
+                    self.board = self.IA.computer_move()
                     self.display_board()
                     current_player = 'y'
                 result = self.winner(self.board)
@@ -161,6 +158,7 @@ class TicTacToe:
                 elif ' ' not in self.board:
                     print("Empate")
 
+            #Preguntarle al usuario si desea cerrar el programa o volvr a jugar
             new_game = input("Presione 's' para jugar nuevamente o 'e' para cerrar el programa definitivamente")
 
             while new_game != 's' and new_game != 'e':
