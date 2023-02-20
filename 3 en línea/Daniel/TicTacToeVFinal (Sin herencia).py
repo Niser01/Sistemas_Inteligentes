@@ -161,7 +161,7 @@ class TicTacToe:
             #Preguntarle al usuario si desea cerrar el programa o volvr a jugar
             new_game = input("Presione 's' para jugar nuevamente o 'e' para cerrar el programa definitivamente")
 
-            while new_game != 's' and new_game != 'e':
+            while new_game != 's' and new_game != 'n':
                 new_game = input("Simbolo incorrecto, intentalo nuevamente.")
 
             if new_game == 's':
