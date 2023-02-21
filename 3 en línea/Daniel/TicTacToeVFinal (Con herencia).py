@@ -1,3 +1,5 @@
+#Le faltan los cambios relacionados con la única función relevante
+
 import math
 import random
 

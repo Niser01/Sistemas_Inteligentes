@@ -8,6 +8,14 @@ class agent:
         self.board = []
         self.available_moves = []
 
+    #Función principal que recibe los parámetros
+    def computer_action(self, variable):
+        if type(variable) == str:
+            self.player = variable
+        elif type(variable) == list:
+            self.update_board(variable)
+            return self.computer_move()
+
     #Nueva percepción del tablero
     def update_board(self, board):
         self.available_moves = []
@@ -131,10 +139,10 @@ class TicTacToe:
 
             if current_player == 'y':
                 self.player = "X"
-                self.IA.player = "O"
+                self.IA.computer_action("O")
             else:
                 self.player = "O"
-                self.IA.player = "X"
+                self.IA.computer_action("X")
 
             self.display_board()
 
@@ -143,11 +151,9 @@ class TicTacToe:
                 if current_player == 'y':
                     self.player_move()
                     current_player = 'n'
-                    self.IA.update_board(self.board)
                     self.display_board()
                 else:
-                    self.IA.update_board(self.board)
-                    self.board = self.IA.computer_move()
+                    self.board = self.IA.computer_action(self.board)
                     self.display_board()
                     current_player = 'y'
                 result = self.winner(self.board)
@@ -159,7 +165,7 @@ class TicTacToe:
                     print("Empate")
 
             #Preguntarle al usuario si desea cerrar el programa o volvr a jugar
-            new_game = input("Presione 's' para jugar nuevamente o 'e' para cerrar el programa definitivamente")
+            new_game = input("Presione 's' para jugar nuevamente o 'n' para cerrar el programa definitivamente")
 
             while new_game != 's' and new_game != 'n':
                 new_game = input("Simbolo incorrecto, intentalo nuevamente.")
